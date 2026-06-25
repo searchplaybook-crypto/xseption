@@ -1,655 +1,1069 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>X-SEPTION | Curated. Not Crowded. — Luxury Menswear Johannesburg</title>
+    <meta name="description" content="X-SEPTION: Luxury menswear boutique in Johannesburg. Curated maisons, personal concierge, discreet delivery. Nine houses. No noise. Est. 1991.">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta property="og:title" content="X-SEPTION | Curated Menswear Johannesburg">
+    <meta property="og:description" content="Luxury boutique menswear. Nine curated maisons. Private concierge. Est. 1991.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/4543cf23f3397dcee3b663726e3ae037ede526d3/assets/xslogo.png">
+    <meta name="twitter:card" content="summary_large_image">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts (via jsdelivr for fontsource-like usage) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/index.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.min.css">
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Material Symbols -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZKPVQY1GB"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Inter"', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            400: '#D4AF37',
-                            500: '#C5A028',
-                            600: '#B08D20',
-                        },
-                        dark: {
-                            900: '#0a0a0a',
-                            800: '#121212',
-                            700: '#1a1a1a',
-                        }
-                    },
-                    backgroundImage: {
-                        'hero-pattern': "url('https://image.qwenlm.ai/public_source/01c44ebb-76c4-4443-94a8-ac2b379ba4ac/15be8a41f-2af8-4803-8bef-427ec3772b3e.png')",
-                    }
-                }
-            }
-        }
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FZKPVQY1GB');
     </script>
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script async src="https://www.instagram.com/embed.js"></script>
+
     <style>
-        body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #D4AF37;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Marquee Animation */
-        .marquee-container {
+        html, body {
+            width: 100%;
+            height: 100%;
             overflow: hidden;
-            white-space: nowrap;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 20s linear infinite;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
         }
 
-        /* Hover Effects */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        /* Glassmorphism */
-        .glass {
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        :root {
+            --bg: #0a0a0a;
+            --bg-alt: #1a1a1a;
+            --cream: #f5e6c8;
+            --gold: #c9a961;
+            --muted: #8a8a6a;
+            --line: rgba(245, 230, 200, 0.08);
+            --glass: rgba(255, 255, 255, 0.06);
         }
 
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .material-symbols-rounded {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        
-        .nav-link {
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+            color: var(--cream);
+            -webkit-font-smoothing: antialiased;
+            -webkit-user-select: none;
+            user-select: none;
             position: relative;
         }
-        .nav-link::after {
+
+        /* THREE.JS BACKGROUND */
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* INTRO LOADER */
+        #intro {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0.95));
+            opacity: 1;
+        }
+
+        #intro.fade-out {
+            animation: introFadeOut 1.2s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes introFadeOut {
+            0% {
+                opacity: 1;
+                backdrop-filter: blur(0px);
+            }
+            50% {
+                opacity: 0.8;
+                backdrop-filter: blur(8px);
+            }
+            100% {
+                opacity: 0;
+                backdrop-filter: blur(20px);
+                pointer-events: none;
+            }
+        }
+
+        .intro-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: logoPulse 1s ease-out 0.3s both;
+        }
+
+        .intro-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(201, 169, 97, 0.4));
+        }
+
+        @keyframes logoPulse {
+            0% {
+                opacity: 0;
+                transform: scale(0.6);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .intro h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            font-size: clamp(32px, 6vw, 56px);
+            margin: 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .intro p {
+            color: var(--muted);
+            letter-spacing: 0.15em;
+            margin-top: 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .loader-bar {
+            width: 60px;
+            height: 2px;
+            background: var(--line);
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-bar::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #D4AF37;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
             width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: loadingSlide 1.8s ease-in-out infinite;
+        }
+
+        @keyframes loadingSlide {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SCROLL CONTAINER */
+        .scroll-container {
+            width: 100%;
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            overscroll-behavior: none;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            width: 100%;
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* SECTION BACKGROUNDS */
+        section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        #hero::before {
+            background-image: url('https://raw.githubusercontent.com/searchplaybook-crypto/xseption/4543cf23f3397dcee3b663726e3ae037ede526d3/assets/xhero.webp');
+        }
+
+        #lookbook::before {
+            background-image: url('https://raw.githubusercontent.com/searchplaybook-crypto/xseption/4543cf23f3397dcee3b663726e3ae037ede526d3/assets/xegstorebg1.webp');
+        }
+
+        #instagram::before {
+            background-image: url('https://raw.githubusercontent.com/searchplaybook-crypto/xseption/4543cf23f3397dcee3b663726e3ae037ede526d3/assets/xegstorebg3.webp');
+        }
+
+        section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,10,10,0.4), rgba(10,10,10,0.7));
+            z-index: 0;
+        }
+
+        /* CONTENT WRAPPER */
+        .section-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* HERO SECTION */
+        #hero {
+            justify-content: flex-end;
+            padding-bottom: 80px;
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideInDown 0.8s ease-out 0.2s both;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 8vw, 56px);
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            animation: slideInDown 0.8s ease-out 0.3s both;
+        }
+
+        .tagline {
+            font-size: 13px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 30px;
+            animation: slideInDown 0.8s ease-out 0.4s both;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInDown 0.8s ease-out 0.5s both;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            background: var(--cream);
+            color: var(--bg);
+            border: 1px solid var(--cream);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border-radius: 0;
+        }
+
+        .btn:active, .btn:hover {
+            background: transparent;
+            color: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--cream);
+            border-color: var(--cream);
+        }
+
+        .btn.ghost:active, .btn.ghost:hover {
+            background: var(--cream);
+            color: var(--bg);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.6;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite 1.5s;
+            z-index: 3;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* LOOKBOOK SECTION */
+        #lookbook {
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+
+        .lookbook-header {
+            margin-bottom: 50px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(26px, 6vw, 44px);
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px;
+            margin-top: 40px;
+        }
+
+        .lookbook-item {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(26,26,26,0.8), rgba(45,45,45,0.8));
+            border: 1px solid var(--line);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .lookbook-item:hover {
+            border-color: rgba(245, 230, 200, 0.3);
+            transform: scale(1.02);
+        }
+
+        .lookbook-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(245, 230, 200, 0.05), rgba(245, 230, 200, 0.02));
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+            padding: 20px;
+            font-weight: 300;
+            z-index: 1;
+        }
+
+        .lookbook-text-layer {
+            position: relative;
+            padding: 24px;
+            background: linear-gradient(180deg, transparent 0%, rgba(10,10,10,0.85) 100%);
+            z-index: 2;
+        }
+
+        .look-label {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(245, 230, 200, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .look-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--cream);
+            line-height: 1.3;
+        }
+
+        /* INSTAGRAM SECTION */
+        #instagram {
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+
+        .instagram-header {
+            margin-bottom: 40px;
+        }
+
+        .insta-feed {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 0 20px 0;
+        }
+
+        .insta-scroll {
+            display: flex;
+            gap: 16px;
+            min-width: 100%;
+            padding: 0 20px;
+        }
+
+        .insta-placeholder {
+            width: 280px;
+            height: 360px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(26,26,26,0.8), rgba(45,45,45,0.8));
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .insta-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .insta-cta {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--cream);
+            text-decoration: none;
+            border-bottom: 1px solid var(--cream);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .insta-cta:hover {
+            opacity: 0.7;
+        }
+
+        /* DETAILS SECTION */
+        #details {
+            justify-content: flex-start;
+            padding-top: 60px;
+        }
+
+        .sizing-table {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .size-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .size-cell {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(245, 230, 200, 0.08), rgba(245, 230, 200, 0.03));
+            border: 1px solid rgba(245, 230, 200, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .size-cell:active, .size-cell:hover {
+            background: rgba(245, 230, 200, 0.15);
+            border-color: rgba(245, 230, 200, 0.4);
+            transform: scale(1.05);
+        }
+
+        .size-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .size-stock {
+            font-size: 9px;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        .size-cell.sold {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .size-cell.sold .size-stock {
+            color: #a05050;
+        }
+
+        .details-prose {
+            padding: 0 20px;
+            font-size: 12px;
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+
+        /* CONCIERGE SECTION */
+        #concierge {
+            background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
+            justify-content: center;
+        }
+
+        .concierge-content {
+            text-align: center;
+            max-width: 320px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .concierge-label {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .concierge-title {
+            font-size: clamp(26px, 5.5vw, 44px);
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        .concierge-desc {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            animation: fadeIn 0.8s ease-out 0.5s both;
+        }
+
+        .whatsapp-btn:active, .whatsapp-btn:hover {
+            background: #20ba58;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .concierge-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+            text-align: left;
+            font-size: 11px;
+            color: var(--muted);
+            padding: 0 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-icon {
+            color: var(--cream);
+            font-size: 9px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .lookbook-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .insta-scroll {
+                padding: 0 16px;
+            }
+
+            .insta-placeholder {
+                width: 100%;
+            }
+        }
+
+        /* ACCESSIBILITY */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
-<body class="font-sans antialiased">
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <span class="font-serif text-2xl font-bold tracking-widest text-white">X<span class="text-gold-400">-</span>SEPTION</span>
-                    <span class="hidden md:block text-xs text-gray-400 border-l border-gray-600 pl-2 ml-2">EST. 1991 · JOHANNESBURG</span>
-                </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#atrium" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white">Maisons</a>
-                    <a href="#lookbook" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white">Lookbook</a>
-                    <a href="#editorial" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white">Editorial</a>
-                    <a href="#locations" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white">Boutiques</a>
-                    <a href="#concierge" class="px-4 py-2 border border-gold-400 text-gold-400 text-sm uppercase tracking-wider hover:bg-gold-400 hover:text-black transition-all duration-300">Concierge</a>
-                </div>
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
-                        <span class="material-symbols-rounded">menu</span>
-                    </button>
-                </div>
-            </div>
+<body>
+    <!-- INTRO LOADER -->
+    <div id="intro">
+        <div class="intro-logo">
+            <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/4543cf23f3397dcee3b663726e3ae037ede526d3/assets/xslogo.png" alt="X-SEPTION">
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-dark-800 border-b border-gray-800">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#atrium" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Maisons</a>
-                <a href="#lookbook" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Lookbook</a>
-                <a href="#editorial" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Editorial</a>
-                <a href="#locations" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Boutiques</a>
-                <a href="#concierge" class="block px-3 py-2 text-base font-medium text-gold-400 hover:text-white hover:bg-gray-700">Concierge</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://image.qwenlm.ai/public_source/01c44ebb-76c4-4443-94a8-ac2b379ba4ac/15be8a41f-2af8-4803-8bef-427ec3772b3e.png" alt="X-SEPTION Boutique" class="w-full h-full object-cover opacity-60">
-            <div class="absolute inset-0 bg-gradient-to-b from-dark-900/30 via-dark-900/60 to-dark-900"></div>
-        </div>
-
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
-            <p class="text-gold-400 uppercase tracking-[0.3em] text-sm mb-4">Curated · Not Crowded</p>
-            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
-                Menswear,<br><span class="text-gradient">Distilled.</span>
-            </h1>
-            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Since 1991, X-SEPTION has curated the rarest menswear maisons for the Johannesburg gentleman. Nine houses. No noise. No fast fashion. Only pieces that endure.
-            </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#atrium" class="px-8 py-4 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300 transform hover:scale-105">
-                    The Nine Maisons
-                </a>
-                <a href="https://wa.me/27821234567?text=Private%20Concierge%20%7C%20X-SEPTION%20inquiry" class="px-8 py-4 border border-white text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300">
-                    Speak to Concierge
-                </a>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <span class="material-symbols-rounded text-white opacity-50">expand_more</span>
-        </div>
-    </section>
-
-    <!-- Marquee Section -->
-    <div class="py-4 bg-dark-800 border-y border-gray-800 marquee-container">
-        <div class="marquee-content text-gray-500 uppercase tracking-widest text-sm">
-            <span class="mx-8">George V Paris</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">R2 Amsterdam</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Psycho Bunny</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">A Fish Named Fred</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Venturo Couture</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Bugatti</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Alberto Paciotti</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">4US</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Cesare Paciotti</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">George V Paris</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">R2 Amsterdam</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Psycho Bunny</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">A Fish Named Fred</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Venturo Couture</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Bugatti</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Alberto Paciotti</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">4US</span>
-            <span class="mx-8">·</span>
-            <span class="mx-8">Cesare Paciotti</span>
-        </div>
+        <h1>X-SEPTION</h1>
+        <p>Curated · Not Crowded</p>
+        <div class="loader-bar"></div>
     </div>
 
-    <!-- The Nine Maisons -->
-    <section id="atrium" class="py-24 bg-dark-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">The Nine Maisons</h2>
-                <p class="text-gray-400 text-lg">Nine houses. Zero noise.</p>
-                <div class="w-16 h-1 bg-gold-400 mx-auto mt-6"></div>
-            </div>
+    <!-- THREE.JS BACKGROUND -->
+    <canvas id="three-canvas"></canvas>
 
-            <p class="text-center text-gray-300 max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="100">
-                Each season we evaluate over two hundred labels. These nine earned a place on our floor — chosen by hand, allocated by number. Tap any maison to view the current X-SEPTION edit and secure your piece through our Private Concierge.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Maison 1: George V -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/george-v.png" alt="George V" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">George V</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Avant-garde Parisian street luxury defined by bold aesthetics. Fusion of high-fashion culture and modern urban rebellion.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20George%20V" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
+    <!-- SCROLL CONTAINER -->
+    <div class="scroll-container">
+        <!-- SWIPE 1: THE HOOK -->
+        <section id="hero">
+            <div class="section-content">
+                <div class="hero-logo">
+                    <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/4543cf23f3397dcee3b663726e3ae037ede526d3/assets/xslogo.png" alt="X-SEPTION">
                 </div>
-
-                <!-- Maison 2: R2 Amsterdam -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/r2-amsterdam.png" alt="R2 Amsterdam" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">R2 Amsterdam</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Distinctive Dutch craftsmanship featuring iconic tailored fits. Designed for the modern man who values unique style.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20R2%20Amsterdam" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
-                </div>
-
-                <!-- Maison 3: Psycho Bunny -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/psycho-bunny.png" alt="Psycho Bunny" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">Psycho Bunny</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Unconventional elegance meets playful, rebellious spirit. Classic silhouettes redefined with a modern edge.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20Psycho%20Bunny" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
-                </div>
-
-                <!-- Maison 4: A Fish Named Fred -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/fish-named-fred.png" alt="A Fish Named Fred" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">A Fish Named Fred</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Celebrate life with vibrant patterns and creative flair. Original designs that turn everyday wear into a statement.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20A%20Fish%20Named%20Fred" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
-                </div>
-
-                <!-- Maison 5: Venturo -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="500">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/venturo.png" alt="Venturo" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">Venturo</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Sophisticated tailoring inspired by Mediterranean grace. Refined essentials crafted for effortless appeal.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20Venturo" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
-                </div>
-
-                <!-- Maison 6: Bugatti -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="600">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/bugatti.png" alt="Bugatti" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">Bugatti</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">European heritage precision meeting modern casual comfort. Perfectly balanced apparel for subtle quality.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20Bugatti" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
-                </div>
-
-                <!-- Maison 7: Alberto -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="700">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/alberto.png" alt="Alberto" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">Alberto</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Innovative trouser engineering focused on movement and fit. Where traditional tailoring meets high-performance fabric.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20Alberto" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
-                </div>
-
-                <!-- Maison 8: Paciotti -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="800">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/paciotti.png" alt="Paciotti" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">Paciotti</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Italian luxury heritage characterized by sharp silhouettes. Crafted for those who demand status and superior finish.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%20Paciotti" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
-                </div>
-
-                <!-- Maison 9: 4US -->
-                <div class="group relative bg-dark-800 rounded-lg overflow-hidden hover-lift cursor-pointer border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="900">
-                    <div class="h-48 overflow-hidden flex items-center justify-center bg-white p-8">
-                        <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/233ecae6a668e99fe6e73073f9b2b01e8a8099c0/assets/4us-paciotti.png" alt="4US" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold text-white mb-2">4US</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">The dynamic evolution of Italian sportswear luxury. Casual, versatile pieces built for a lifestyle in motion.</p>
-                    </div>
-                    <div class="absolute inset-0 bg-dark-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="https://wa.me/27821234567?text=Inquiry%20for%204US" class="px-6 py-3 bg-gold-400 text-black font-semibold uppercase tracking-wider hover:bg-white transition-all duration-300">Secure via Concierge</a>
-                    </div>
+                <h1>Curated<br>Not Crowded</h1>
+                <p class="tagline">Luxury Menswear Since 1991</p>
+                <div class="cta-group">
+                    <a href="#lookbook" class="btn">Explore</a>
+                    <a href="#concierge" class="btn ghost">Concierge</a>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="scroll-hint">↓ Swipe to Enter</div>
+        </section>
 
-    <!-- Lookbook Section -->
-    <section id="lookbook" class="py-24 bg-dark-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="w-full md:w-1/2" data-aos="fade-right">
-                    <div class="relative overflow-hidden rounded-lg shadow-2xl">
-                        <img src="https://image.qwenlm.ai/public_source/01c44ebb-76c4-4443-94a8-ac2b379ba4ac/15be8a41f-2af8-4803-8bef-427ec3772b3e.png" alt="Lookbook" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                            <p class="text-gold-400 text-sm uppercase tracking-wider mb-1">Current Edit</p>
-                            <p class="text-white font-serif text-xl">Shot in-store. Personally selected.</p>
+        <!-- SWIPE 2: LOOKBOOK -->
+        <section id="lookbook">
+            <div class="section-content">
+                <div class="lookbook-header">
+                    <div class="section-label">Current Edit</div>
+                    <h2>The Curated Floor</h2>
+                    <p style="font-size: 12px; color: var(--muted); margin-top: 12px; letter-spacing: 0.08em;">Personally selected. In-store editorial.</p>
+                </div>
+
+                <div class="lookbook-grid">
+                    <div class="lookbook-item">
+                        <div class="lookbook-placeholder">Look 01</div>
+                        <div class="lookbook-text-layer">
+                            <div class="look-label">Editorial</div>
+                            <h3 class="look-title">The Field Uniform</h3>
+                        </div>
+                    </div>
+                    <div class="lookbook-item">
+                        <div class="lookbook-placeholder">Look 02</div>
+                        <div class="lookbook-text-layer">
+                            <div class="look-label">Casual</div>
+                            <h3 class="look-title">Weekend Edit</h3>
+                        </div>
+                    </div>
+                    <div class="lookbook-item">
+                        <div class="lookbook-placeholder">Look 03</div>
+                        <div class="lookbook-text-layer">
+                            <div class="look-label">Formal</div>
+                            <h3 class="look-title">Evening Wear</h3>
+                        </div>
+                    </div>
+                    <div class="lookbook-item">
+                        <div class="lookbook-placeholder">Look 04</div>
+                        <div class="lookbook-text-layer">
+                            <div class="look-label">Street</div>
+                            <h3 class="look-title">Urban Sophistication</h3>
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2" data-aos="fade-left">
-                    <h2 class="font-serif text-4xl font-bold text-white mb-6">The Lookbook</h2>
-                    <p class="text-gray-300 text-lg mb-6 leading-relaxed">
-                        Current edits, personally selected. UGC from our floor, shot in-store. Every piece on display has been chosen by hand. Tap any look to secure it through our Private Concierge — sized, reserved, and ready for collection or discreet delivery.
-                    </p>
-                    <a href="https://wa.me/27821234567?text=Private%20Concierge%20%7C%20Lookbook%20inquiry" class="inline-flex items-center gap-2 px-6 py-3 border border-gold-400 text-gold-400 font-semibold uppercase tracking-wider hover:bg-gold-400 hover:text-black transition-all duration-300">
-                        <span class="material-symbols-rounded">chat_bubble</span>
-                        Book Fitting
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Editorial / Philosophy -->
-    <section id="editorial" class="py-24 bg-dark-900 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-dark-800 to-transparent opacity-50"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">The X-SEPTION Philosophy</h2>
-                <p class="text-gold-400 text-lg uppercase tracking-wider">Thirty-three years of saying no.</p>
+                <p style="font-size: 11px; color: var(--muted); letter-spacing: 0.08em; margin-top: 40px; padding: 0 20px;">
+                    Each piece reserved through private concierge inquiry.
+                </p>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div data-aos="fade-right">
-                    <p class="text-gray-300 text-xl leading-relaxed mb-8">
-                        The hardest job in menswear is deciding what doesn't make the floor. Every season, hundreds of labels pitch for space. We accept nine.
-                    </p>
-                    <p class="text-gray-300 text-lg leading-relaxed">
-                        The result is a boutique where every hanger earns its place. Where the gentleman walks in and finds only pieces that speak his language — no scrolling, no compromise.
-                    </p>
+        <!-- SWIPE 3: INSTAGRAM -->
+        <section id="instagram">
+            <div class="section-content">
+                <div class="instagram-header">
+                    <div class="section-label">Filed From The Floor</div>
+                    <h2>@xseption_est.1991</h2>
+                    <p style="font-size: 12px; color: var(--muted); margin-top: 12px; letter-spacing: 0.08em;">Follow along for daily curated edits</p>
                 </div>
-                <div class="grid grid-cols-2 gap-8" data-aos="fade-left">
-                    <div class="text-center p-6 bg-dark-800 rounded-lg border border-gray-800">
-                        <span class="block text-4xl font-serif font-bold text-gold-400 mb-2">1991</span>
-                        <span class="text-gray-400 uppercase tracking-wider text-sm">Founded</span>
-                    </div>
-                    <div class="text-center p-6 bg-dark-800 rounded-lg border border-gray-800">
-                        <span class="block text-4xl font-serif font-bold text-gold-400 mb-2">2</span>
-                        <span class="text-gray-400 uppercase tracking-wider text-sm">Flagships</span>
-                    </div>
-                    <div class="text-center p-6 bg-dark-800 rounded-lg border border-gray-800 col-span-2">
-                        <span class="block text-4xl font-serif font-bold text-gold-400 mb-2">9</span>
-                        <span class="text-gray-400 uppercase tracking-wider text-sm">Curated Maisons</span>
+
+                <div class="insta-feed">
+                    <div class="insta-scroll">
+                        <div class="insta-placeholder">
+                            <div class="insta-icon">📷</div>
+                            <p>Instagram feed</p>
+                        </div>
+                        <div class="insta-placeholder">
+                            <div class="insta-icon">📸</div>
+                            <p>In-store portfolio</p>
+                        </div>
+                        <div class="insta-placeholder">
+                            <div class="insta-icon">🎬</div>
+                            <p>Editorial content</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="text-center mt-16" data-aos="fade-up">
-                <a href="#concierge" class="px-8 py-4 bg-white text-black font-semibold uppercase tracking-wider hover:bg-gold-400 transition-all duration-300">
-                    Meet the Buyers
+
+                <a href="https://www.instagram.com/xseption_est.1991/" target="_blank" class="insta-cta">
+                    Follow on Instagram →
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Locations -->
-    <section id="locations" class="py-24 bg-dark-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Two Flagships</h2>
-                <p class="text-gray-400 text-lg">Visit the floor.</p>
+        <!-- SWIPE 4: DETAILS -->
+        <section id="details">
+            <div class="section-content">
+                <div class="lookbook-header">
+                    <div class="section-label">Size & Stock</div>
+                    <h2>Current Inventory</h2>
+                </div>
+
+                <div class="sizing-table">
+                    <div class="size-row">
+                        <div class="size-cell">
+                            <div class="size-label">XS</div>
+                            <div class="size-stock">3 Left</div>
+                        </div>
+                        <div class="size-cell">
+                            <div class="size-label">S</div>
+                            <div class="size-stock">4 Left</div>
+                        </div>
+                        <div class="size-cell">
+                            <div class="size-label">M</div>
+                            <div class="size-stock">4 Left</div>
+                        </div>
+                        <div class="size-cell">
+                            <div class="size-label">L</div>
+                            <div class="size-stock">2 Left</div>
+                        </div>
+                    </div>
+                    <div class="size-row">
+                        <div class="size-cell">
+                            <div class="size-label">XL</div>
+                            <div class="size-stock">3 Left</div>
+                        </div>
+                        <div class="size-cell sold">
+                            <div class="size-label">2XL</div>
+                            <div class="size-stock">Sold Out</div>
+                        </div>
+                        <div class="size-cell">
+                            <div class="size-label">3XL</div>
+                            <div class="size-stock">1 Left</div>
+                        </div>
+                        <div class="size-cell sold">
+                            <div class="size-label">4XL</div>
+                            <div class="size-stock">Sold Out</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-prose">
+                    <strong>The Curated Edit</strong><br>
+                    Every piece on display has been selected by hand. Nine maisons. Zero compromise. All sizes available through private concierge inquiry—reserve your size, we'll photograph it, and arrange discreet delivery or private fitting.
+                </div>
+
+                <p style="font-size: 11px; color: var(--muted); letter-spacing: 0.08em; line-height: 1.8; padding: 0 20px;">
+                    Authenticity guaranteed. 7-day exchange. Same-day JHB delivery available.
+                </p>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Mandela Square -->
-                <div class="bg-dark-900 p-8 rounded-lg border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="material-symbols-rounded text-gold-400 text-3xl">location_on</span>
-                        <div>
-                            <h3 class="text-2xl font-serif font-bold text-white">Flagship 01</h3>
-                            <p class="text-gold-400 text-sm uppercase tracking-wider">Mandela Square</p>
-                        </div>
-                    </div>
-                    <div class="space-y-4 mb-8 text-gray-300">
-                        <p>Mandela Square, Rivonia Road</p>
-                        <p>Sandton, Johannesburg 2196</p>
-                        <p>Gauteng, South Africa</p>
-                    </div>
-                    <div class="border-t border-gray-800 pt-6 mb-8">
-                        <h4 class="text-white font-semibold mb-4">Boutique Hours</h4>
-                        <div class="flex justify-between text-sm text-gray-400 mb-2">
-                            <span>Monday – Friday</span>
-                            <span>09:00 – 19:00</span>
-                        </div>
-                        <div class="flex justify-between text-sm text-gray-400 mb-2">
-                            <span>Saturday</span>
-                            <span>09:00 – 18:00</span>
-                        </div>
-                        <div class="flex justify-between text-sm text-gray-400">
-                            <span>Sunday</span>
-                            <span>09:00 – 17:00</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=Mandela+Square+Sandton+Johannesburg" class="flex-1 py-3 text-center border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-all duration-300 rounded">
-                            Navigate
-                        </a>
-                        <a href="tel:+27110000000" class="flex-1 py-3 text-center bg-gold-400 text-black font-semibold hover:bg-white transition-all duration-300 rounded">
-                            Call
-                        </a>
-                    </div>
-                </div>
+        <!-- SWIPE 5: CONCIERGE -->
+        <section id="concierge">
+            <div class="concierge-content">
+                <div class="concierge-label">Reserve Your Piece</div>
+                <h2 class="concierge-title">Private Concierge</h2>
+                <p class="concierge-desc">
+                    One message. Everything reserved. No checkout forms. No abandoned carts.
+                </p>
+                <a href="https://wa.me/27821234567?text=Private%20Concierge%20%7C%20X-SEPTION%20inquiry%20%7C%20Size:%20%20%7C%20Piece:%20" class="whatsapp-btn">
+                    Open WhatsApp
+                </a>
 
-                <!-- Eastgate -->
-                <div class="bg-dark-900 p-8 rounded-lg border border-gray-800 hover:border-gold-400/50 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="material-symbols-rounded text-gold-400 text-3xl">location_on</span>
-                        <div>
-                            <h3 class="text-2xl font-serif font-bold text-white">Flagship 02</h3>
-                            <p class="text-gold-400 text-sm uppercase tracking-wider">Eastgate</p>
-                        </div>
+                <div class="concierge-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div>Discreet Packaging & Delivery</div>
                     </div>
-                    <div class="space-y-4 mb-8 text-gray-300">
-                        <p>Eastgate Shopping Centre, Bradford Road</p>
-                        <p>Bedfordview, Johannesburg 2008</p>
-                        <p>Gauteng, South Africa</p>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div>Same-Day JHB Courier Option</div>
                     </div>
-                    <div class="border-t border-gray-800 pt-6 mb-8">
-                        <h4 class="text-white font-semibold mb-4">Boutique Hours</h4>
-                        <div class="flex justify-between text-sm text-gray-400 mb-2">
-                            <span>Monday – Friday</span>
-                            <span>09:00 – 19:00</span>
-                        </div>
-                        <div class="flex justify-between text-sm text-gray-400 mb-2">
-                            <span>Saturday</span>
-                            <span>09:00 – 17:00</span>
-                        </div>
-                        <div class="flex justify-between text-sm text-gray-400">
-                            <span>Sunday</span>
-                            <span>09:00 – 15:00</span>
-                        </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div>Authenticity Guaranteed</div>
                     </div>
-                    <div class="flex gap-4">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=Eastgate+Shopping+Centre+Bedfordview" class="flex-1 py-3 text-center border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-all duration-300 rounded">
-                            Navigate
-                        </a>
-                        <a href="tel:+27110000001" class="flex-1 py-3 text-center bg-gold-400 text-black font-semibold hover:bg-white transition-all duration-300 rounded">
-                            Call
-                        </a>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div>7-Day Exchange Privilege</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Private Concierge -->
-    <section id="concierge" class="py-24 bg-dark-900 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
-            <span class="material-symbols-rounded text-gold-400 text-6xl mb-6">support_agent</span>
-            <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Private Concierge</h2>
-            <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-                One message. Everything reserved. No checkout forms. No abandoned carts. Send us a message on WhatsApp with the piece you want, your size, and your preferred boutique. Our concierge will reserve it, photograph it for you, and arrange discreet delivery or private fitting.
-            </p>
-            
-            <a href="https://wa.me/27821234567?text=Private%20Concierge%20%7C%20X-SEPTION%20inquiry" class="inline-flex items-center gap-3 px-10 py-5 bg-gold-400 text-black font-bold text-lg uppercase tracking-wider hover:bg-white hover:scale-105 transition-all duration-300 rounded shadow-lg shadow-gold-400/20">
-                <span class="material-symbols-rounded">chat_bubble</span>
-                Open Concierge Chat
-            </a>
-
-            <div class="flex flex-wrap justify-center gap-8 mt-12 text-gray-400 text-sm">
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-rounded text-gold-400">local_shipping</span>
-                    Discreet Packaging
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-rounded text-gold-400">schedule</span>
-                    JHB Same-Day
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-rounded text-gold-400">verified</span>
-                    Authenticity Guaranteed
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-rounded text-gold-400">autorenew</span>
-                    7-Day Exchange
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-black py-12 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-center md:text-left">
-                    <span class="font-serif text-2xl font-bold tracking-widest text-white">X<span class="text-gold-400">-</span>SEPTION</span>
-                    <p class="text-gray-500 text-sm mt-2">Curated luxury menswear, Johannesburg.<br>Two flagships. Nine maisons. Thirty-three years of saying no to noise.</p>
-                </div>
-                
-                <div class="flex gap-6">
-                    <a href="https://www.instagram.com/xseption_est.1991/" class="text-gray-400 hover:text-gold-400 transition-colors">
-                        <span class="material-symbols-rounded">camera_alt</span>
-                    </a>
-                    <a href="https://wa.me/27821234567" class="text-gray-400 hover:text-gold-400 transition-colors">
-                        <span class="material-symbols-rounded">chat</span>
-                    </a>
-                    <a href="mailto:concierge@xseption.co.za" class="text-gray-400 hover:text-gold-400 transition-colors">
-                        <span class="material-symbols-rounded">alternate_email</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-900 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
-                <p>&copy; 2026 X-SEPTION · Est. 1991</p>
-                <div class="flex gap-4">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                </div>
-                <p>Digital Strategy by <a href="https://searchplaybook.blogspot.com/" class="text-gold-400 hover:text-white transition-colors">Search Playbook</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating Concierge Button -->
-    <a href="https://wa.me/27821234567?text=Private%20Concierge%20%7C%20X-SEPTION" class="fixed bottom-8 right-8 z-50 p-4 bg-gold-400 rounded-full shadow-lg shadow-gold-400/30 hover:bg-white hover:scale-110 transition-all duration-300 group">
-        <span class="material-symbols-rounded text-black text-3xl group-hover:rotate-12 transition-transform">support_agent</span>
-    </a>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
+        // INTRO LOADER
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const intro = document.getElementById('intro');
+                intro.classList.add('fade-out');
+                setTimeout(() => {
+                    intro.style.display = 'none';
+                }, 1200);
+            }, 2000);
         });
 
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        // THREE.JS BACKGROUND ANIMATION
+        const canvas = document.getElementById('three-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        camera.position.z = 50;
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-            } else {
-                navbar.classList.remove('shadow-lg');
+        // Create particle system
+        const particles = new THREE.Points(
+            new THREE.BufferGeometry(),
+            new THREE.PointsMaterial({ color: 0xc9a961, size: 2, sizeAttenuation: true, opacity: 0.3 })
+        );
+
+        const particleCount = 100;
+        const positions = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            positions[i] = (Math.random() - 0.5) * 200;
+            positions[i + 1] = (Math.random() - 0.5) * 200;
+            positions[i + 2] = (Math.random() - 0.5) * 200;
+        }
+
+        particles.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        scene.add(particles);
+
+        function animateParticles() {
+            const positions = particles.geometry.attributes.position.array;
+            for (let i = 0; i < positions.length; i += 3) {
+                positions[i] += (Math.random() - 0.5) * 0.5;
+                positions[i + 1] += (Math.random() - 0.5) * 0.5;
+                positions[i + 2] += (Math.random() - 0.5) * 0.5;
             }
+            particles.geometry.attributes.position.needsUpdate = true;
+            particles.rotation.x += 0.0001;
+            particles.rotation.y += 0.0002;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        // SCROLL SNAP
+        const scrollContainer = document.querySelector('.scroll-container');
+        let isSnapping = false;
+
+        scrollContainer.addEventListener('scroll', () => {
+            if (isSnapping) return;
+            isSnapping = true;
+
+            requestAnimationFrame(() => {
+                const sections = document.querySelectorAll('section');
+                let closestSection = sections[0];
+                let closestDistance = Math.abs(scrollContainer.scrollTop - closestSection.offsetTop);
+
+                sections.forEach(section => {
+                    const distance = Math.abs(scrollContainer.scrollTop - section.offsetTop);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestSection = section;
+                    }
+                });
+
+                isSnapping = false;
+            });
+        }, { passive: true });
+
+        // TOUCH SWIPE DETECTION
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        scrollContainer.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        scrollContainer.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diff = touchStartY - touchEndY;
+            const threshold = 50;
+
+            if (Math.abs(diff) < threshold) return;
+
+            const sections = document.querySelectorAll('section');
+            const currentScroll = scrollContainer.scrollTop;
+            let targetSection = sections[0];
+
+            sections.forEach((section, index) => {
+                const distance = Math.abs(currentScroll - section.offsetTop);
+                const nextDistance = index < sections.length - 1 
+                    ? Math.abs(currentScroll - sections[index + 1].offsetTop)
+                    : Infinity;
+
+                if (diff > 0 && nextDistance < distance) {
+                    targetSection = sections[index + 1];
+                } else if (diff < 0 && index > 0) {
+                    targetSection = sections[index - 1];
+                }
+            });
+
+            scrollContainer.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        // SIZE CELL INTERACTION
+        document.querySelectorAll('.size-cell:not(.sold)').forEach(cell => {
+            cell.addEventListener('click', function() {
+                const sizeLabel = this.querySelector('.size-label').textContent;
+                const message = `I'm interested in a piece in size ${sizeLabel}`;
+                const whatsappUrl = `https://wa.me/27821234567?text=${encodeURIComponent(message)}`;
+                window.location.href = whatsappUrl;
+            });
         });
 
-        // Smooth Scroll for Anchor Links
+        // ANCHOR LINKS
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+
                 e.preventDefault();
-                menu.classList.add('hidden'); // Close mobile menu on click
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
+        });
+
+        // RESPONSIVE THREE.JS
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
 </html>
-
