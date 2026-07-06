@@ -4,7 +4,727 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>X-SEPTION | Curated. Not Crowded. — Luxury Menswear Johannesburg</title>
-    <meta name="description" content="X-SEPTION: Luxury menswear boutique in Johannesburg. Curated maisons, personal concierge, discreet delivery. Nine houses. No noise. Est. 1991.">
+    <meta name="description" content="X-SEPTION: Luxury menswear boutique in Johannesburg. Curated maisons, personal concierge, discreet delivery. Nine h<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="X-SEPTION — Luxury Menswear Boutique. Curated lookbooks for Johannesburg. Mandela Square & Eastgate.">
+<meta name="theme-color" content="#070707">
+<title>X-SEPTION — Luxury Menswear | Est. 1991</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --bg-deep: #070707;
+  --bg-surface: #0f0f0f;
+  --bg-card: rgba(255,255,255,0.06);
+  --bg-glass: rgba(255,255,255,0.08);
+  --text-primary: #e8e4dc;
+  --text-muted: #8a8a8a;
+  --accent-gold: #c9a961;
+  --accent-gold-dim: #a08540;
+  --border-subtle: rgba(232,228,220,0.08);
+  --shadow-lift: 0 20px 60px rgba(0,0,0,0.5);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.3);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --map-filter: invert(90%) hue-rotate(180deg) brightness(0.7) contrast(1.2);
+}
+[data-theme="light"] {
+  --bg-deep: #f5f2ed;
+  --bg-surface: #eae6df;
+  --bg-card: rgba(0,0,0,0.04);
+  --bg-glass: rgba(0,0,0,0.06);
+  --text-primary: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --accent-gold: #a08030;
+  --accent-gold-dim: #806020;
+  --border-subtle: rgba(0,0,0,0.08);
+  --shadow-lift: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.08);
+  --map-filter: none;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-primary);line-height:1.6;overflow-x:hidden;transition:background 0.5s,color 0.5s}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--bg-deep);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,visibility 0.8s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{height:110px;width:auto;object-fit:contain;margin-bottom:2rem;filter:brightness(1.1)}
+[data-theme="light"] .loader-logo{filter:brightness(0.15)}
+.loader-bar{width:140px;height:2px;background:var(--border-subtle);border-radius:2px;overflow:hidden;margin-bottom:1.5rem}
+.loader-bar-inner{width:0;height:100%;background:var(--accent-gold);animation:loadBar 1.8s ease-in-out forwards}
+@keyframes loadBar{0%{width:0}50%{width:70%}100%{width:100%}}
+.loader-tagline{font-family:var(--font-serif);font-size:0.85rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);opacity:0;animation:fadeIn 1s ease 0.5s forwards}
+@keyframes fadeIn{to{opacity:1}}
+
+/* NAV - REFINED */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease}
+.nav.scrolled{background:var(--bg-glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border-subtle);padding:0.6rem 1.25rem}
+.nav-logo{height:52px;width:auto;object-fit:contain;filter:brightness(1.1);transition:filter 0.3s}
+[data-theme="light"] .nav-logo{filter:brightness(0.15)}
+.nav-actions{display:flex;gap:0.5rem;align-items:center}
+.nav-btn{display:flex;align-items:center;gap:0.35rem;padding:0.45rem 0.9rem;border:1px solid var(--border-subtle);border-radius:100px;background:var(--bg-card);backdrop-filter:blur(16px);color:var(--text-primary);font-family:var(--font-sans);font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);cursor:pointer}
+.nav-btn:hover{border-color:var(--accent-gold);background:rgba(201,169,97,0.12);transform:translateY(-1px);box-shadow:0 4px 20px rgba(201,169,97,0.15)}
+.nav-btn svg{width:13px;height:13px;stroke:var(--accent-gold);stroke-width:2}
+.nav-btn-ig{border-color:rgba(201,169,97,0.2)}
+.nav-btn-wa{border-color:rgba(37,211,102,0.2)}
+.nav-btn-wa svg{stroke:#25d366}
+.theme-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border-subtle);background:var(--bg-card);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-primary);transition:all 0.3s}
+.theme-toggle:hover{border-color:var(--accent-gold);transform:rotate(15deg)}
+.theme-toggle svg{width:15px;height:15px}
+
+/* HERO - NEW BACKGROUND + GLASSMORPHIC LAYERING */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7rem 1.5rem 4rem;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.35;transition:opacity 0.5s;transform:scale(1.05);animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{0%{transform:scale(1.05)}100%{transform:scale(1.15)}}
+[data-theme="light"] .hero-bg img{opacity:0.2}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--bg-deep) 0%,rgba(7,7,7,0.3) 30%,rgba(7,7,7,0.2) 50%,rgba(7,7,7,0.4) 70%,var(--bg-deep) 100%)}
+
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.hero-visual-wrap{position:relative;padding:2.5rem 3rem;background:var(--bg-glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border-subtle);border-radius:20px;margin-bottom:2rem;box-shadow:0 30px 80px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.05)}
+.hero-visual-wrap::before{content:'';position:absolute;inset:-1px;border-radius:20px;padding:1px;background:linear-gradient(135deg,rgba(201,169,97,0.3),transparent 40%,transparent 60%,rgba(201,169,97,0.2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.hero-visual img{height:clamp(120px,22vw,240px);width:auto;object-fit:contain;filter:drop-shadow(0 15px 40px rgba(201,169,97,0.3));animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.hero-badge{display:inline-flex;align-items:center;gap:0.6rem;padding:0.5rem 1.5rem;background:var(--bg-glass);backdrop-filter:blur(16px);border:1px solid var(--border-subtle);border-radius:100px;font-family:var(--font-sans);font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem}
+.hero-badge span{color:var(--accent-gold)}
+.hero-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--accent-gold);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+.hero-eyebrow{font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem;position:relative;z-index:2}
+.hero-title{font-family:var(--font-serif);font-size:clamp(2.2rem,6.5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--text-primary);margin-bottom:1.25rem;position:relative;z-index:2}
+.hero-title em{font-style:italic;color:var(--accent-gold)}
+
+/* SHIMMER TEXT EFFECT */
+.shimmer-text{background:linear-gradient(90deg,var(--text-primary) 0%,var(--accent-gold) 25%,var(--text-primary) 50%,var(--accent-gold) 75%,var(--text-primary) 100%);background-size:200% auto;color:transparent;-webkit-background-clip:text;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+
+.hero-subtitle{font-family:var(--font-sans);font-size:clamp(0.85rem,2vw,1rem);font-weight:300;color:var(--text-muted);max-width:520px;margin:0 auto 2rem;line-height:1.7;position:relative;z-index:2}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+
+/* REFINED BUTTONS */
+.btn-primary{padding:0.9rem 2.2rem;background:linear-gradient(135deg,var(--accent-gold),#b8943f);color:#070707;font-family:var(--font-sans);font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:0 4px 20px rgba(201,169,97,0.25)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,169,97,0.35)}
+.btn-primary svg{width:15px;height:15px;stroke-width:2.5}
+
+.btn-ghost{padding:0.9rem 2.2rem;background:transparent;color:var(--text-primary);font-family:var(--font-sans);font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border-subtle);border-radius:6px;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--accent-gold);background:rgba(201,169,97,0.08);transform:translateY(-2px)}
+.btn-ghost svg{width:15px;height:15px;stroke-width:2}
+
+/* BRAND MARQUEE */
+.marquee-section{padding:3rem 0;overflow:hidden;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);background:var(--bg-surface)}
+.marquee-track{display:flex;gap:3.5rem;animation:marqueeScroll 35s linear infinite;width:max-content}
+.marquee-section:hover .marquee-track{animation-play-state:paused}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{font-family:var(--font-serif);color:var(--text-muted);white-space:nowrap;user-select:none;transition:color 0.3s}
+.marquee-item:hover{color:var(--accent-gold)}
+.brand-gv{font-size:1.6rem;font-weight:400}
+.brand-rr{font-size:1.4rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em}
+.brand-pb{font-size:1.3rem;font-weight:400;font-style:italic}
+.brand-aff{font-size:1.2rem;font-weight:300}
+.brand-ven{font-size:1.3rem;font-weight:500;text-transform:uppercase;letter-spacing:0.2em}
+.brand-bug{font-size:1.5rem;font-weight:500;text-transform:uppercase;letter-spacing:0.12em}
+.brand-alb{font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em}
+.brand-pac{font-size:1.4rem;font-weight:400;font-style:italic}
+.brand-4us{font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.18em}
+.brand-ms{font-size:1.4rem;font-weight:300}
+
+/* SECTIONS */
+.section{padding:5rem 1.5rem;max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-label{font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.75rem}
+.section-title{font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:300;color:var(--text-primary);margin-bottom:0.75rem}
+.section-subtitle{font-family:var(--font-sans);font-size:0.9rem;font-weight:300;color:var(--text-muted);max-width:500px;margin:0 auto}
+
+/* LOOKBOOK GRID */
+.lookbook-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:0.75rem}
+@media(min-width:480px){.lookbook-grid{gap:1rem}}
+@media(min-width:768px){.lookbook-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.5rem}}
+@media(min-width:1024px){.lookbook-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+
+.product-card{position:relative;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden;cursor:pointer;transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+.product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lift);border-color:rgba(201,169,97,0.25)}
+.product-card-img{aspect-ratio:3/4;width:100%;object-fit:cover;transition:transform 0.6s}
+.product-card:hover .product-card-img{transform:scale(1.06)}
+.product-card-placeholder{aspect-ratio:3/4;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;border:2px dashed var(--border-subtle);background:var(--bg-card);transition:all 0.3s}
+.product-card:hover .product-card-placeholder{border-color:rgba(201,169,97,0.35);background:rgba(201,169,97,0.05)}
+.placeholder-brand{font-family:var(--font-serif);font-size:clamp(0.75rem,3vw,1.1rem);font-weight:500;color:var(--text-primary);text-align:center;line-height:1.2;margin-bottom:0.25rem}
+.placeholder-type{font-family:var(--font-sans);font-size:clamp(0.55rem,2vw,0.75rem);font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;text-align:center}
+.placeholder-sku{font-family:var(--font-sans);font-size:clamp(0.5rem,1.8vw,0.65rem);font-weight:500;color:var(--accent-gold);letter-spacing:0.1em;margin-top:auto}
+.product-card-info{padding:0.85rem}
+.product-card-tag{font-family:var(--font-sans);font-size:0.6rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.25rem}
+.product-card-name{font-family:var(--font-serif);font-size:clamp(0.8rem,2.5vw,1rem);font-weight:400;color:var(--text-primary);line-height:1.3}
+.product-card-brand{font-family:var(--font-sans);font-size:0.65rem;color:var(--text-muted);margin-top:0.25rem;letter-spacing:0.05em}
+
+/* INSTAGRAM */
+.instagram-section{background:var(--bg-surface);position:relative;overflow:hidden}
+.instagram-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent-gold),transparent);opacity:0.3}
+.instagram-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:0.75rem}
+@media(min-width:480px){.instagram-grid{gap:1rem}}
+@media(min-width:768px){.instagram-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
+@media(min-width:1024px){.instagram-grid{grid-template-columns:repeat(4,1fr)}}
+.instagram-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden;transition:all 0.3s}
+.instagram-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-card);border-color:rgba(201,169,97,0.2)}
+.instagram-card-img{aspect-ratio:1/1;width:100%;object-fit:cover}
+.instagram-card-body{padding:1rem}
+.instagram-card-caption{font-family:var(--font-sans);font-size:0.8rem;color:var(--text-primary);line-height:1.5;margin-bottom:0.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.instagram-card-date{font-family:var(--font-sans);font-size:0.65rem;color:var(--text-muted);letter-spacing:0.05em}
+.instagram-card-link{display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.75rem;font-family:var(--font-sans);font-size:0.7rem;font-weight:500;color:var(--accent-gold);text-decoration:none;letter-spacing:0.05em;transition:gap 0.3s}
+.instagram-card-link:hover{gap:0.6rem}
+.instagram-cta{text-align:center;margin-top:2.5rem}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border-subtle)}
+.faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;background:none;border:none;color:var(--text-primary);font-family:var(--font-sans);font-size:0.95rem;font-weight:500;text-align:left;cursor:pointer;transition:color 0.3s}
+.faq-question:hover{color:var(--accent-gold)}
+.faq-question svg{width:18px;height:18px;stroke:var(--text-muted);transition:transform 0.3s;flex-shrink:0;margin-left:1rem}
+.faq-item.open .faq-question svg{transform:rotate(45deg);stroke:var(--accent-gold)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease}
+.faq-item.open .faq-answer{max-height:300px;padding-bottom:1.25rem}
+.faq-answer p{font-family:var(--font-sans);font-size:0.85rem;color:var(--text-muted);line-height:1.7}
+.faq-answer a{color:var(--accent-gold);text-decoration:none}
+.faq-answer a:hover{text-decoration:underline}
+
+/* MAP */
+.map-section{background:var(--bg-surface)}
+.map-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.map-grid{grid-template-columns:1fr 1fr}}
+.map-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:14px;overflow:hidden}
+.map-card iframe{width:100%;height:220px;border:none;filter:var(--map-filter);transition:filter 0.5s}
+.map-card-body{padding:1.25rem}
+.map-card-title{font-family:var(--font-serif);font-size:1.1rem;font-weight:400;color:var(--text-primary);margin-bottom:0.25rem}
+.map-card-address{font-family:var(--font-sans);font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem}
+.map-card-hours{font-family:var(--font-sans);font-size:0.75rem;color:var(--text-muted);line-height:1.6}
+.map-card-hours strong{color:var(--text-primary);font-weight:500}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border-subtle);padding:4rem 1.5rem 2rem;background:var(--bg-deep)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-brand{text-align:center;margin-bottom:3rem}
+.footer-logo{height:52px;width:auto;object-fit:contain;margin-bottom:1rem;filter:brightness(1.1)}
+[data-theme="light"] .footer-logo{filter:brightness(0.15)}
+.footer-tagline{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;font-style:italic;color:var(--text-muted)}
+.footer-statement{font-family:var(--font-serif);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:300;text-align:center;color:var(--text-primary);margin-bottom:3rem;line-height:1.4}
+.footer-statement em{color:var(--accent-gold);font-style:italic}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-bottom:3rem}
+@media(min-width:768px){.footer-grid{grid-template-columns:repeat(3,1fr)}}
+.footer-col h4{font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem}
+.footer-col p,.footer-col a{font-family:var(--font-sans);font-size:0.8rem;color:var(--text-muted);line-height:1.8;text-decoration:none;transition:color 0.3s}
+.footer-col a:hover{color:var(--accent-gold)}
+.footer-social{display:flex;gap:1rem;justify-content:center;margin-bottom:2rem}
+.footer-social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all 0.3s}
+.footer-social a:hover{border-color:var(--accent-gold);color:var(--accent-gold);transform:translateY(-2px)}
+.footer-social svg{width:16px;height:16px}
+.footer-copy{text-align:center;font-family:var(--font-sans);font-size:0.7rem;color:var(--text-muted);letter-spacing:0.05em}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:all 0.4s}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{position:relative;background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:18px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(0.92) translateY(20px);transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1)}
+.modal-overlay.active .modal{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-subtle);background:var(--bg-card);color:var(--text-primary);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;z-index:10}
+.modal-close:hover{border-color:var(--accent-gold);color:var(--accent-gold);transform:rotate(90deg)}
+.modal-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px 18px 0 0}
+.modal-placeholder{width:100%;aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:var(--bg-card);border-radius:18px 18px 0 0;border-bottom:1px solid var(--border-subtle)}
+.modal-placeholder-brand{font-family:var(--font-serif);font-size:1.5rem;font-weight:500;color:var(--text-primary);text-align:center;margin-bottom:0.5rem}
+.modal-placeholder-type{font-family:var(--font-sans);font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.modal-body{padding:1.5rem}
+.modal-tag{font-family:var(--font-sans);font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.5rem}
+.modal-name{font-family:var(--font-serif);font-size:1.5rem;font-weight:400;color:var(--text-primary);margin-bottom:0.25rem}
+.modal-brand{font-family:var(--font-sans);font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem}
+.modal-meta{display:flex;gap:1.5rem;margin-bottom:1.5rem}
+.modal-meta-item{font-family:var(--font-sans);font-size:0.8rem;color:var(--text-muted)}
+.modal-meta-item strong{display:block;color:var(--text-primary);font-weight:600;margin-bottom:0.15rem}
+.modal-price{font-family:var(--font-serif);font-size:1.75rem;font-weight:300;color:var(--accent-gold);margin-bottom:1.5rem}
+.modal-qty{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.modal-qty label{font-family:var(--font-sans);font-size:0.8rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.modal-qty input{width:60px;padding:0.5rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-primary);font-family:var(--font-sans);font-size:0.9rem;text-align:center}
+.modal-store{margin-bottom:1.5rem}
+.modal-store label{font-family:var(--font-sans);font-size:0.8rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:0.5rem}
+.modal-store select{width:100%;padding:0.75rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-primary);font-family:var(--font-sans);font-size:0.85rem;cursor:pointer}
+.modal-store select:focus{outline:none;border-color:var(--accent-gold)}
+.modal-btn{width:100%;padding:1rem;background:linear-gradient(135deg,var(--accent-gold),#b8943f);color:#070707;font-family:var(--font-sans);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border:none;border-radius:10px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:0.5rem;box-shadow:0 4px 20px rgba(201,169,97,0.25)}
+.modal-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,169,97,0.35)}
+
+/* FLOATING THEME TOGGLE */
+.floating-theme{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;width:48px;height:48px;border-radius:50%;border:1px solid var(--border-subtle);background:var(--bg-glass);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-primary);transition:all 0.3s;box-shadow:var(--shadow-card)}
+.floating-theme:hover{border-color:var(--accent-gold);transform:scale(1.1) rotate(15deg)}
+.floating-theme svg{width:20px;height:20px}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}.marquee-track{animation:none}.loader-bar-inner{animation:none;width:100%}.hero-bg img{animation:none}}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- GOOGLE VERIFICATION -->
+<!-- google-site-verification: google0358e8a493fefd4f.html -->
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img src="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?tr=w-400" alt="X-SEPTION" class="loader-logo" id="loaderLogo">
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+  <p class="loader-tagline">Curated. Not Crowded.</p>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" style="display:flex;align-items:center;text-decoration:none">
+    <img src="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?tr=w-300" alt="X-SEPTION" class="nav-logo" id="navLogo">
+  </a>
+  <div class="nav-actions">
+    <a href="https://instagram.com/xseption_est.1991" target="_blank" rel="noopener" class="nav-btn nav-btn-ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      @xseption_est.1991
+    </a>
+    <a href="https://wa.me/27722756933" target="_blank" rel="noopener" class="nav-btn nav-btn-wa">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      Squire
+    </a>
+    <button class="theme-toggle" id="themeToggleNav" aria-label="Toggle theme">
+      <svg id="moonIconNav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <svg id="sunIconNav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://raw.githubusercontent.com/searchplaybook-crypto/xseption/bebb3820bf473138dcc1addb6917511228b5ef25/assets/xegstorebg4.webp" alt="" loading="eager">
+  </div>
+  <div class="hero-content">
+    <div class="hero-visual-wrap" data-scroll>
+      <div class="hero-visual">
+        <img src="https://ik.imagekit.io/wemustcreate/CLIENTS%20/x2d.png?tr=w-600" alt="X-SEPTION">
+      </div>
+    </div>
+    <div class="hero-badge" data-scroll>
+      <span class="hero-badge-dot"></span>
+      <span>Mandela Square</span> &middot; <span>Eastgate</span> &middot; <span>Est. 1991</span>
+    </div>
+    <p class="hero-eyebrow" data-scroll>Luxury Menswear &middot; Est. 1991</p>
+    <h1 class="hero-title" data-scroll>Curated <em class="shimmer-text">Lookbooks</em><br>for Johannesburg</h1>
+    <p class="hero-subtitle" data-scroll>Seasonal edits from George V, Rock Revival, Psycho Bunny, Milestone, Bugatti, Alberto, Paciotti, 4US, A Fish Named Fred &amp; Venturo. Order via WhatsApp squire for same-day collection.</p>
+    <div class="hero-cta" data-scroll>
+      <a href="#lookbook" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        View Lookbooks
+      </a>
+      <a href="https://wa.me/27722756933" class="btn-ghost" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        WhatsApp Squire
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND MARQUEE -->
+<section class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item brand-gv">George V</span>
+    <span class="marquee-item brand-rr">Rock Revival</span>
+    <span class="marquee-item brand-pb">Psycho Bunny</span>
+    <span class="marquee-item brand-aff">A Fish Named Fred</span>
+    <span class="marquee-item brand-ven">Venturo</span>
+    <span class="marquee-item brand-bug">Bugatti</span>
+    <span class="marquee-item brand-alb">Alberto</span>
+    <span class="marquee-item brand-pac">Paciotti</span>
+    <span class="marquee-item brand-4us">4US</span>
+    <span class="marquee-item brand-ms">Milestone</span>
+    <span class="marquee-item brand-gv">George V</span>
+    <span class="marquee-item brand-rr">Rock Revival</span>
+    <span class="marquee-item brand-pb">Psycho Bunny</span>
+    <span class="marquee-item brand-aff">A Fish Named Fred</span>
+    <span class="marquee-item brand-ven">Venturo</span>
+    <span class="marquee-item brand-bug">Bugatti</span>
+    <span class="marquee-item brand-alb">Alberto</span>
+    <span class="marquee-item brand-pac">Paciotti</span>
+    <span class="marquee-item brand-4us">4US</span>
+    <span class="marquee-item brand-ms">Milestone</span>
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section class="section" id="lookbook">
+  <div class="section-header" data-scroll>
+    <p class="section-label">The Collection</p>
+    <h2 class="section-title">Current Lookbook</h2>
+    <p class="section-subtitle">Tap any item to enquire via WhatsApp. Sizes and availability confirmed by our squire.</p>
+  </div>
+  <div class="lookbook-grid" id="lookbookGrid"></div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="section instagram-section" id="instagram">
+  <div class="section-header" data-scroll>
+    <p class="section-label">@xseption_est.1991</p>
+    <h2 class="section-title">From the Feed</h2>
+    <p class="section-subtitle">Latest drops, styling inspiration, and behind-the-scenes from Mandela Square &amp; Eastgate.</p>
+  </div>
+  <div class="instagram-grid" id="instagramGrid"></div>
+  <div class="instagram-cta" data-scroll>
+    <a href="https://instagram.com/xseption_est.1991" target="_blank" rel="noopener" class="btn-ghost">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      Follow @xseption_est.1991
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-header" data-scroll>
+    <p class="section-label">Questions</p>
+    <h2 class="section-title">Boutique FAQ</h2>
+  </div>
+  <div class="faq-list" id="faqList"></div>
+</section>
+
+<!-- MAP -->
+<section class="section map-section" id="locations">
+  <div class="section-header" data-scroll>
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title">Our Locations</h2>
+    <p class="section-subtitle">Two boutiques, one standard of curation.</p>
+  </div>
+  <div class="map-grid">
+    <div class="map-card" data-scroll>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.0!2d28.048!3d-26.108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68c5e0b0d7%3A0x2e6c7e8f9a0b1c2d!2sNelson%20Mandela%20Square!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-card-body">
+        <h3 class="map-card-title">Mandela Square</h3>
+        <p class="map-card-address">Shop 207, Sandton City Complex<br>Sandton, Johannesburg</p>
+        <div class="map-card-hours">
+          <strong>Hours</strong><br>
+          Mon&ndash;Fri: 9:00 &ndash; 19:00<br>
+          Saturday: 9:00 &ndash; 18:00<br>
+          Sunday: 10:00 &ndash; 16:00
+        </div>
+      </div>
+    </div>
+    <div class="map-card" data-scroll>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.0!2d28.142!3d-26.178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950d68c5e0b0d7%3A0x2e6c7e8f9a0b1c2e!2sEastgate%20Shopping%20Centre!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-card-body">
+        <h3 class="map-card-title">Eastgate</h3>
+        <p class="map-card-address">Shop L42, Eastgate Mall<br>Bedfordview, Johannesburg</p>
+        <div class="map-card-hours">
+          <strong>Hours</strong><br>
+          Mon&ndash;Fri: 9:00 &ndash; 18:00<br>
+          Saturday: 9:00 &ndash; 17:00<br>
+          Sunday: 10:00 &ndash; 15:00
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?tr=w-300" alt="X-SEPTION" class="footer-logo" id="footerLogo">
+      <p class="footer-tagline">Curated. Not Crowded.</p>
+    </div>
+    <p class="footer-statement">&ldquo;Curated. Not Crowded. <em>Direct to the Source.</em>&rdquo;</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>WhatsApp Squire: <a href="https://wa.me/27722756933" target="_blank" rel="noopener">+27 72 275 6933</a></p>
+        <p>Instagram: <a href="https://instagram.com/xseption_est.1991" target="_blank" rel="noopener">@xseption_est.1991</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Mandela Square: Mon&ndash;Fri 9&ndash;7, Sat 9&ndash;6, Sun 10&ndash;4</p>
+        <p>Eastgate: Mon&ndash;Fri 9&ndash;6, Sat 9&ndash;5, Sun 10&ndash;3</p>
+      </div>
+      <div class="footer-col">
+        <h4>Brands</h4>
+        <p>George V, Rock Revival, Psycho Bunny, Milestone, Bugatti, Alberto, Paciotti, 4US, A Fish Named Fred, Venturo</p>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/xseption_est.1991" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+      <a href="https://wa.me/27722756933" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      </a>
+    </div>
+    <p class="footer-copy">&copy; 2024 X-SEPTION. Est. 1991. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div id="modalMedia"></div>
+    <div class="modal-body">
+      <p class="modal-tag" id="modalTag">New Arrival</p>
+      <h3 class="modal-name" id="modalTitle">Product Name</h3>
+      <p class="modal-brand" id="modalBrand">Brand</p>
+      <div class="modal-meta">
+        <div class="modal-meta-item"><strong>SKU</strong><span id="modalSku">---</span></div>
+        <div class="modal-meta-item"><strong>Price</strong><span id="modalPrice">---</span></div>
+      </div>
+      <div class="modal-qty">
+        <label for="modalQty">Quantity</label>
+        <input type="number" id="modalQty" value="1" min="1" max="10">
+      </div>
+      <div class="modal-store">
+        <label for="modalStore">Collect From</label>
+        <select id="modalStore">
+          <option value="Mandela Square">Mandela Square, Sandton</option>
+          <option value="Eastgate">Eastgate, Bedfordview</option>
+        </select>
+      </div>
+      <button class="modal-btn" id="modalWhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        Send to Squire
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING THEME TOGGLE -->
+<button class="floating-theme" id="themeToggleFloat" aria-label="Toggle theme">
+  <svg id="moonIconFloat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <svg id="sunIconFloat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+</button>
+
+<script>
+const WHATSAPP_NUMBER = '27722756933';
+
+// LOOKBOOK PRODUCTS - categorized with Instagram images as SKU templates
+const products = [
+  // FORMALWEAR
+  { id:1, name:'Italian Blazer', brand:'George V', tag:'New Arrival', sku:'GV-001', price:'R 4,950', 
+    image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.82787-15/619886305_17971396577993589_1174908136172724037_n.webp?_nc_cat=107&ig_cache_key=MzgxNjUxOTQ3NTAzMDE4ODM0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=2TCL4Q03QrIQ7kNvwEWELNn&_nc_oc=AdovXlTkI2xU5YToWoZKxfbTfY1_2AoK9llSFxfALFu3VNymWBLmo_ylPQl2PpELtFU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=-LJr8ag8L5wxDeBfQQgPVg&_nc_ss=7a22e&oh=00_AQAveD91VhbrgvRgcWBhnqCdiFYrLiBJHuHZOab_2IR44Q&oe=6A515EA5', hasImage:true },
+  { id:2, name:'Tailored Suit', brand:'Venturo', tag:'Limited', sku:'VN-002', price:'R 8,500', 
+    image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.82787-15/610624239_17969339153993589_4579651168602913436_n.webp?_nc_cat=111&ig_cache_key=MzgwMjY5NzM2ODk1NzY3Mjk3NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=p2XHoLey--wQ7kNvwGThozm&_nc_oc=AdqpFrT-Jabbn2Q9SrQcciLK2Vr7YZ2P5Ivonn4tauUfJ9ZJpTFSe15oU958-J0CPP0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=unltvcgZR2QyPIdikVWB1Q&_nc_ss=7a22e&oh=00_AQBZESTV95YO0ypoeUPU3-kmjfQYWDw39op3I2uvibzAOw&oe=6A5142D1', hasImage:true },
+  { id:3, name:'Blush Pink Blazer', brand:'George V', tag:'Italian Import', sku:'GV-003', price:'R 5,200', 
+    image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.71878-15/572122802_605128719293305_786590379968508762_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ig_cache_key=Mzc1NTY0NTQ3OTIyNTQxODM2OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=d4GE76M_ENIQ7kNvwFAl20K&_nc_oc=AdpzfjiC16DmYFtFDhaPIw46H9_Iei3rJrfkSQhDIhgUFajHs96Qpc7kJ_ZQTn42B3A&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=Lw0uRjm0MaOXlnQ03wQvZw&_nc_ss=7a22e&oh=00_AQAnEDRpZCtCtXMLfWneiSbrWfVLCO7HK3ixAOZcQGgthA&oe=6A5155C2', hasImage:true },
+  { id:4, name:'Dress Shirt', brand:'Paciotti', tag:'Classic', sku:'CP-004', price:'R 2,100', hasImage:false },
+
+  // TOPS
+  { id:5, name:'Bold Print Shirt', brand:'A Fish Named Fred', tag:'Bestseller', sku:'AF-005', price:'R 1,450', 
+    image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.71878-15/612108005_5087455094812016_589106221497005747_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=111&ig_cache_key=MzgwNzcyMDI4NjIyNTcwMDUwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=YJr0eItHAF8Q7kNvwF7nFw9&_nc_oc=Adq0A10t02GWUACiJH9N0pde-UpXJKmj0v2k4tX56q8_MRuWsCgl-B2EnUyhpJbaxPs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=-LJr8ag8L5wxDeBfQQgPVg&_nc_ss=7a22e&oh=00_AQBIsujQLwlPv8krvRRF61vKju01y5F2ewU5E-ZkAAc2wA&oe=6A514A3D', hasImage:true },
+  { id:6, name:'Classic Polo', brand:'Psycho Bunny', tag:'Seasonal', sku:'PB-006', price:'R 1,850', hasImage:false },
+  { id:7, name:'Graphic Tee', brand:'4US', tag:'New Arrival', sku:'4U-007', price:'R 950', hasImage:false },
+  { id:8, name:'Statement Jacket', brand:'Bugatti', tag:'Limited', sku:'BG-008', price:'R 4,200', 
+    image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.71878-15/610910021_868700785564630_9156331517718937370_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=100&ig_cache_key=MzgwNDIyNzUzMTkyMzA1NzIwNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=mVybxxoAz40Q7kNvwECx0G8&_nc_oc=AdqpUBBsdzvStsWlmf_1pD0riKIzn1RQ8VwoI-zhtlwGTCd7vmfp4NuNoiqS46S595c&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=unltvcgZR2QyPIdikVWB1Q&_nc_ss=7a22e&oh=00_AQCl3MWCOPRJqwF99_jNtyhE04gLlbZyMIQN0HKLWjnmgQ&oe=6A513B4F', hasImage:true },
+
+  // BOTTOMS
+  { id:9, name:'Black Slim Jeans', brand:'Rock Revival', tag:'Bestseller', sku:'RR-009', price:'R 2,450', 
+    image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.82787-15/620464497_17971268018993589_5295710498891026856_n.webp?_nc_cat=102&ig_cache_key=MzgxNTY3ODAxNTc1ODE0NzY0NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=N41Su8bhShcQ7kNvwGbKEPw&_nc_oc=Adp6_QWyKVmnhLIgPa_-gLvBuktT679DbBRTNMZ5sfyFqwfLMYZFNeYoTfuxPk9mw6E&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=-LJr8ag8L5wxDeBfQQgPVg&_nc_ss=7a22e&oh=00_AQBjhzew2HI82zVEiXV0eONqAkkMq4bPEc8pGWFfT6-ZuA&oe=6A5161FE', hasImage:true },
+  { id:10, name:'Tailored Trousers', brand:'Alberto', tag:'New Arrival', sku:'AL-010', price:'R 2,200', hasImage:false },
+  { id:11, name:'Chino Shorts', brand:'Milestone', tag:'Seasonal', sku:'MS-011', price:'R 1,200', hasImage:false },
+  { id:12, name:'Biker Jeans', brand:'Rock Revival', tag:'Bestseller', sku:'RR-012', price:'R 2,950', hasImage:false }
+];
+
+// INSTAGRAM FEED - remaining posts not used in lookbook
+const instagramPosts = [
+  { id:1, image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.82787-15/619581490_17971177853993589_7698755364445138250_n.webp?_nc_cat=103&ig_cache_key=MzgxNTAwNzQ5MDAxODk1MzMyNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=IUpNXQhKcVQQ7kNvwGshuxV&_nc_oc=Adp_SnA06TiZSZwLgdDLZ7DXGjKY-yT0xpKh_j-Rvk8oo5fLw42X487r8vy6yg2CqgE&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=-LJr8ag8L5wxDeBfQQgPVg&_nc_ss=7a22e&oh=00_AQDHacS2uDKgaDpJ_mUmIavBHEn9rJv0JSdDSZrY_trSdw&oe=6A516406', caption:'Fresh arrivals hitting the floor. Come feel the fabric.', date:'Jan 21, 2026', url:'https://www.instagram.com/xseption_est.1991/p/DTxoR3GCIme/' },
+  { id:2, image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.82787-15/616163423_1230861828968758_3779138722616260429_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=MzgxMDcyNDMwMjcxMDkxNTU2OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=xbHq0ADzrQEQ7kNvwGQNJ2R&_nc_oc=AdqHYwyiQHsQYr3R5Pn4XYFuVOUOLV-lm6a2LrlI0F3VyFnQCV0RGTllsLryvM41CbQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=-LJr8ag8L5wxDeBfQQgPVg&_nc_ss=7a22e&oh=00_AQCzQqp5Fr56Y1Zwb4sJS0Ld8B9k1fklOvSunVS0ZKVCxA&oe=6A516910', caption:'Style that stands out--without trying too hard.', date:'Jan 13, 2026', url:'https://www.instagram.com/xseption_est.1991/reel/DTiaZAwCEHw/' },
+  { id:3, image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.82787-15/606905078_17968619072993589_2181421382247170904_n.webp?_nc_cat=103&ig_cache_key=Mzc5ODI5NDE3NTAxMjEwODgxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=QZrYU-XsyjwQ7kNvwEumMc3&_nc_oc=AdqPdbTJh8zee60XuFmoNMQXJOURDV_1bF9QRw7mfCu3J3ZhgvsqUjTA_2Tv-Wr_tmg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=unltvcgZR2QyPIdikVWB1Q&_nc_ss=7a22e&oh=00_AQC5BRK1_OMaS7hI2fZcVkJhow18rW3pbyxGEYgf4yAaGw&oe=6A51317B', caption:'Holiday season at X-SEPTION. Gift the exceptional.', date:'Dec 26, 2025', url:'https://www.instagram.com/xseption_est.1991/p/DS2QG2OCDoO/' },
+  { id:4, image:'https://scontent-jnb2-1.cdninstagram.com/v/t51.71878-15/608397700_4275867066027801_1139321182693282446_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=MzgwMDA0NDQyNTE1NDQzOTIwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=oIL4YdK8IgUQ7kNvwH5xMwB&_nc_oc=AdoJajtfocA2s4vdts8fB_HITcSrcAUSnE8meenbJ4nziXGvUOGjX7mvGuj3qnWfvuI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-jnb2-1.cdninstagram.com&_nc_gid=unltvcgZR2QyPIdikVWB1Q&_nc_ss=7a22e&oh=00_AQCAQ9C0-rZm_E-22rHuFX2GDelbnjWR5Xl6J3VaivSBzA&oe=6A513186', caption:'Happy New Year from the X-SEPTION family.', date:'Dec 31, 2025', url:'https://www.instagram.com/xseption_est.1991/reel/DS8eEVsCKgp/' }
+];
+
+const faqs = [
+  { q:'What are your boutique hours?', a:'Mandela Square: Mon--Fri 9:00--19:00, Sat 9:00--18:00, Sun 10:00--16:00. Eastgate: Mon--Fri 9:00--18:00, Sat 9:00--17:00, Sun 10:00--15:00.' },
+  { q:'Which brands do you stock?', a:'We carry George V, Rock Revival, Psycho Bunny, Milestone, Bugatti, Alberto, Paciotti, 4US, A Fish Named Fred, and Venturo. Availability varies by season and location.' },
+  { q:'How does the WhatsApp squire work?', a:'Tap any product, select your size and quantity, choose your preferred store, and hit "Send to Squire". Our team will confirm availability and arrange collection or delivery within Johannesburg.' },
+  { q:'Can I order directly from the brands?', a:'While we recommend visiting our boutiques for the full curated experience, you can also shop directly: <a href="https://georgevparis.com" target="_blank">George V Paris</a>, <a href="https://rockrevival.com" target="_blank">Rock Revival</a>, <a href="https://psychobunny.com" target="_blank">Psycho Bunny</a>.' }
+];
+
+function renderLookbook() {
+  const grid = document.getElementById('lookbookGrid');
+  grid.innerHTML = products.map(p => {
+    if (p.hasImage) {
+      return `<div class="product-card" data-id="${p.id}">
+        <img src="${p.image}" alt="${p.name}" class="product-card-img" loading="lazy">
+        <div class="product-card-info">
+          <p class="product-card-tag">${p.tag}</p>
+          <h3 class="product-card-name">${p.name}</h3>
+          <p class="product-card-brand">${p.brand}</p>
+        </div>
+      </div>`;
+    } else {
+      return `<div class="product-card" data-id="${p.id}">
+        <div class="product-card-placeholder">
+          <span class="placeholder-brand">${p.brand}</span>
+          <span class="placeholder-type">${p.name}</span>
+          <span class="placeholder-sku">${p.sku}</span>
+        </div>
+        <div class="product-card-info">
+          <p class="product-card-tag">${p.tag}</p>
+          <h3 class="product-card-name">${p.name}</h3>
+          <p class="product-card-brand">${p.brand}</p>
+        </div>
+      </div>`;
+    }
+  }).join('');
+}
+
+function renderInstagram() {
+  const grid = document.getElementById('instagramGrid');
+  grid.innerHTML = instagramPosts.map(post => `
+    <div class="instagram-card">
+      <img src="${post.image}" alt="Instagram post" class="instagram-card-img" loading="lazy">
+      <div class="instagram-card-body">
+        <p class="instagram-card-caption">${post.caption}</p>
+        <p class="instagram-card-date">${post.date}</p>
+        <a href="${post.url}" target="_blank" rel="noopener" class="instagram-card-link">
+          View on Instagram
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderFAQ() {
+  const list = document.getElementById('faqList');
+  list.innerHTML = faqs.map((f,i) => `
+    <div class="faq-item" data-index="${i}">
+      <button class="faq-question">
+        ${f.q}
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      </button>
+      <div class="faq-answer"><p>${f.a}</p></div>
+    </div>
+  `).join('');
+}
+
+let currentProduct = null;
+const modal = document.getElementById('productModal');
+const modalMedia = document.getElementById('modalMedia');
+const modalTag = document.getElementById('modalTag');
+const modalTitle = document.getElementById('modalTitle');
+const modalBrand = document.getElementById('modalBrand');
+const modalSku = document.getElementById('modalSku');
+const modalPrice = document.getElementById('modalPrice');
+const modalQty = document.getElementById('modalQty');
+const modalStore = document.getElementById('modalStore');
+
+function openModal(productId) {
+  currentProduct = products.find(p => p.id === productId);
+  if (!currentProduct) return;
+  modalTag.textContent = currentProduct.tag;
+  modalTitle.textContent = currentProduct.name;
+  modalBrand.textContent = currentProduct.brand;
+  modalSku.textContent = currentProduct.sku;
+  modalPrice.textContent = currentProduct.price;
+  modalQty.value = 1;
+  if (currentProduct.hasImage) {
+    modalMedia.innerHTML = `<img src="${currentProduct.image}" alt="${currentProduct.name}" class="modal-img">`;
+  } else {
+    modalMedia.innerHTML = `<div class="modal-placeholder"><span class="modal-placeholder-brand">${currentProduct.brand}</span><span class="modal-placeholder-type">${currentProduct.name}</span></div>`;
+  }
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('.modal-close').focus();
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  currentProduct = null;
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
+document.getElementById('modalWhatsApp').addEventListener('click', () => {
+  if (!currentProduct) return;
+  const qty = modalQty.value;
+  const store = modalStore.value;
+  const msg = `Hi X-SEPTION, I am interested in:\n\n${currentProduct.name}\n${currentProduct.brand}\nSKU: ${currentProduct.sku}\n${currentProduct.price}\nQty: ${qty}\nCollect from: ${store}\n\nPlease confirm availability. Thank you!`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+});
+
+document.getElementById('faqList').addEventListener('click', e => {
+  const btn = e.target.closest('.faq-question');
+  if (!btn) return;
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+});
+
+function updateThemeIcons(isLight) {
+  const moonNav = document.getElementById('moonIconNav');
+  const sunNav = document.getElementById('sunIconNav');
+  const moonFloat = document.getElementById('moonIconFloat');
+  const sunFloat = document.getElementById('sunIconFloat');
+  if (isLight) {
+    moonNav.style.display = 'none'; sunNav.style.display = 'block';
+    moonFloat.style.display = 'none'; sunFloat.style.display = 'block';
+  } else {
+    moonNav.style.display = 'block'; sunNav.style.display = 'none';
+    moonFloat.style.display = 'block'; sunFloat.style.display = 'none';
+  }
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('xseption-theme', theme);
+  updateThemeIcons(theme === 'light');
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  setTheme(current === 'light' ? 'dark' : 'light');
+}
+
+const savedTheme = localStorage.getItem('xseption-theme') || 'dark';
+setTheme(savedTheme);
+
+document.getElementById('themeToggleNav').addEventListener('click', toggleTheme);
+document.getElementById('themeToggleFloat').addEventListener('click', toggleTheme);
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    initAnimations();
+  }, 2200);
+});
+
+function initAnimations() {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('[data-scroll]').forEach(el => {
+    gsap.from(el, {
+      y: 40, opacity: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+}
+
+renderLookbook();
+renderInstagram();
+renderFAQ();
+
+document.getElementById('lookbookGrid').addEventListener('click', e => {
+  const card = e.target.closest('.product-card');
+  if (card) openModal(parseInt(card.dataset.id));
+});
+</script>
+</body>
+</html>ouses. No noise. Est. 1991.">
     <meta name="theme-color" content="#1a1a1a">
     <meta property="og:title" content="X-SEPTION | Curated Menswear Johannesburg">
     <meta property="og:description" content="Luxury boutique menswear. Nine curated maisons. Private concierge. Est. 1991.">
