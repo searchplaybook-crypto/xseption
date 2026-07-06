@@ -3,11 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="X-SEPTION — Luxury Menswear Boutique. Curated lookbooks for Johannesburg. Mandela Square & Eastgate.">
 <meta name="theme-color" content="#070707">
-<title>X-SEPTION — Luxury Menswear | Est. 1991</title>
+
+<!-- === RESTORED METATAGS === -->
+<title>X-SEPTION — Luxury Menswear | Est. 1991 | Sandton & Eastgate</title>
+<meta name="description" content="X-SEPTION Luxury Menswear — curated collections from George V, Rock Revival, Psycho Bunny, Milestone, Bugatti, Alberto, Paciotti & more. Est. 1991. Mandela Square & Eastgate Mall, Johannesburg.">
+<meta name="keywords" content="X-SEPTION, luxury menswear, designer clothing Johannesburg, Sandton City, Eastgate Mall, George V, Rock Revival, Psycho Bunny, Milestone, Bugatti, Alberto, Paciotti, 4US, mens fashion South Africa, Sandton menswear boutique">
+<meta name="author" content="X-SEPTION">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="bingbot" content="index, follow">
+<meta name="language" content="English">
+<meta name="geo.region" content="ZA-GP">
+<meta name="geo.placename" content="Johannesburg">
+<meta name="geo.position" content="-26.108;28.048">
+<meta name="ICBM" content="-26.108, 28.048">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://searchplaybook-crypto.github.io/xseption/">
+<meta property="og:title" content="X-SEPTION — Luxury Menswear | Est. 1991">
+<meta property="og:description" content="Curated. Not Crowded. Luxury menswear from Mandela Square & Eastgate, Johannesburg. George V, Rock Revival, Psycho Bunny, Alberto, Paciotti & more.">
+<meta property="og:image" content="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?tr=w-1200,h-630,fo-center">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="X-SEPTION Luxury Menswear Logo">
+<meta property="og:locale" content="en_ZA">
+<meta property="og:site_name" content="X-SEPTION">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@xseption_est1991">
+<meta name="twitter:creator" content="@xseption_est1991">
+<meta name="twitter:title" content="X-SEPTION — Luxury Menswear | Est. 1991">
+<meta name="twitter:description" content="Curated. Not Crowded. Designer menswear collections at Mandela Square & Eastgate, Johannesburg.">
+<meta name="twitter:image" content="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?tr=w-1200,h-630,fo-center">
+<meta name="twitter:image:alt" content="X-SEPTION Luxury Menswear">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://searchplaybook-crypto.github.io/xseption/">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?tr=w-32,h-32">
+<link rel="apple-touch-icon" href="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?tr=w-180,h-180">
+
+<!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="dns-prefetch" href="https://scontent-jnb2-1.cdninstagram.com">
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -46,16 +99,76 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-primary);line-height:1.6;overflow-x:hidden;transition:background 0.5s,color 0.5s}
 
-/* LOADER */
-.loader{position:fixed;inset:0;background:var(--bg-deep);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,visibility 0.8s}
+/* ============================================
+   1. SINGLE INTRO LOADING ANIMATION (CSS + JS)
+   ============================================ */
+.loader{
+  position:fixed;inset:0;
+  background:var(--bg-deep);
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1), visibility 0.9s cubic-bezier(0.4,0,0.2,1);
+}
 .loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.loader-logo{height:110px;width:auto;object-fit:contain;margin-bottom:2rem;filter:brightness(1.1)}
+
+/* Logo: fade in + scale up (CSS) */
+.loader-logo{
+  height:110px;width:auto;object-fit:contain;
+  filter:brightness(1.1);
+  opacity:0;
+  transform:scale(0.88) translateY(12px);
+  animation:loaderLogoIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s forwards;
+}
 [data-theme="light"] .loader-logo{filter:brightness(0.15)}
-.loader-bar{width:140px;height:2px;background:var(--border-subtle);border-radius:2px;overflow:hidden;margin-bottom:1.5rem}
-.loader-bar-inner{width:0;height:100%;background:var(--accent-gold);animation:loadBar 1.8s ease-in-out forwards}
-@keyframes loadBar{0%{width:0}50%{width:70%}100%{width:100%}}
-.loader-tagline{font-family:var(--font-serif);font-size:0.85rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);opacity:0;animation:fadeIn 1s ease 0.5s forwards}
-@keyframes fadeIn{to{opacity:1}}
+@keyframes loaderLogoIn{
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+
+/* Progress bar: single fill animation (CSS) */
+.loader-bar{
+  width:160px;height:2px;
+  background:var(--border-subtle);
+  border-radius:2px;overflow:hidden;
+  margin:2rem 0 1.5rem;
+  opacity:0;
+  animation:loaderBarIn 0.4s ease 0.3s forwards;
+}
+@keyframes loaderBarIn{to{opacity:1}}
+
+.loader-bar-inner{
+  width:0;height:100%;
+  background:var(--accent-gold);
+  animation:loadBarFill 2.0s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+}
+@keyframes loadBarFill{
+  0%{width:0}
+  50%{width:72%}
+  100%{width:100%}
+}
+
+/* Tagline: fade up (CSS) */
+.loader-tagline{
+  font-family:var(--font-serif);
+  font-size:0.85rem;font-weight:300;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--text-muted);
+  opacity:0;
+  transform:translateY(8px);
+  animation:loaderTaglineIn 0.7s ease 1.0s forwards;
+}
+@keyframes loaderTaglineIn{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Main content: hidden until loader exits, then revealed by JS */
+#main-content{
+  opacity:0;
+  transition:opacity 0.7s ease 0.15s;
+}
+#main-content.visible{opacity:1}
 
 /* NAV - REFINED */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease}
@@ -112,13 +225,60 @@ body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-pri
 .btn-ghost:hover{border-color:var(--accent-gold);background:rgba(201,169,97,0.08);transform:translateY(-2px)}
 .btn-ghost svg{width:15px;height:15px;stroke-width:2}
 
-/* BRAND MARQUEE */
-.marquee-section{padding:3rem 0;overflow:hidden;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);background:var(--bg-surface)}
-.marquee-track{display:flex;gap:3.5rem;animation:marqueeScroll 35s linear infinite;width:max-content}
-.marquee-section:hover .marquee-track{animation-play-state:paused}
-@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.marquee-item{font-family:var(--font-serif);color:var(--text-muted);white-space:nowrap;user-select:none;transition:color 0.3s}
+/* ============================================
+   3. BRAND MARQUEE — FIXED FLEXBOX SIZING
+   ============================================ */
+.marquee-section{
+  padding:3rem 0;
+  overflow:hidden;
+  border-top:1px solid var(--border-subtle);
+  border-bottom:1px solid var(--border-subtle);
+  background:var(--bg-surface);
+}
+
+/* FIXED: wrapper uses max-content so animation scrolls full duplicated width */
+.marquee-wrapper{
+  display:flex;
+  width:max-content;
+  will-change:transform;
+}
+
+/* FIXED: track is the flex container with explicit gap */
+.marquee-track{
+  display:flex;
+  align-items:center;
+  gap:3.5rem;
+  padding:0 1.75rem; /* half gap on each side for visual balance */
+  flex:none; /* don't shrink or grow */
+}
+
+/* FIXED: each item has explicit flex: 0 0 auto so they don't compress */
+.marquee-item{
+  flex:0 0 auto;           /* FIXED: don't grow, don't shrink, auto basis */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-serif);
+  color:var(--text-muted);
+  white-space:nowrap;
+  user-select:none;
+  transition:color 0.3s;
+  min-width:max-content;   /* FIXED: enforce content width */
+}
 .marquee-item:hover{color:var(--accent-gold)}
+
+/* Animation applied to wrapper, not track */
+.marquee-wrapper{
+  animation:marqueeScroll 35s linear infinite;
+}
+.marquee-section:hover .marquee-wrapper{animation-play-state:paused}
+
+@keyframes marqueeScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* Brand font sizing */
 .brand-gv{font-size:1.6rem;font-weight:400}
 .brand-rr{font-size:1.4rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em}
 .brand-pb{font-size:1.3rem;font-weight:400;font-style:italic}
@@ -129,6 +289,17 @@ body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-pri
 .brand-pac{font-size:1.4rem;font-weight:400;font-style:italic}
 .brand-4us{font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.18em}
 .brand-ms{font-size:1.4rem;font-weight:300}
+
+/* Responsive: tighter gap on mobile */
+@media(max-width:768px){
+  .marquee-track{gap:2.5rem;padding:0 1.25rem}
+  .brand-gv{font-size:1.3rem}
+  .brand-rr{font-size:1.15rem}
+  .brand-pb{font-size:1.1rem}
+  .brand-bug{font-size:1.25rem}
+  .brand-pac{font-size:1.15rem}
+  .brand-ms{font-size:1.15rem}
+}
 
 /* SECTIONS */
 .section{padding:5rem 1.5rem;max-width:1200px;margin:0 auto}
@@ -253,7 +424,7 @@ body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-pri
 .floating-theme svg{width:20px;height:20px}
 
 /* REDUCED MOTION */
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}.marquee-track{animation:none}.loader-bar-inner{animation:none;width:100%}.hero-bg img{animation:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}.marquee-wrapper{animation:none}.loader-bar-inner{animation:none;width:100%}.hero-bg img{animation:none}}
 </style>
 </head>
 <body>
@@ -267,6 +438,9 @@ body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-pri
   <div class="loader-bar"><div class="loader-bar-inner"></div></div>
   <p class="loader-tagline">Curated. Not Crowded.</p>
 </div>
+
+<!-- MAIN CONTENT (revealed after loader) -->
+<div id="main-content">
 
 <!-- NAV -->
 <nav class="nav" id="nav">
@@ -321,28 +495,33 @@ body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-pri
 </section>
 
 <!-- BRAND MARQUEE -->
-<section class="marquee-section">
-  <div class="marquee-track">
-    <span class="marquee-item brand-gv">George V</span>
-    <span class="marquee-item brand-rr">Rock Revival</span>
-    <span class="marquee-item brand-pb">Psycho Bunny</span>
-    <span class="marquee-item brand-aff">A Fish Named Fred</span>
-    <span class="marquee-item brand-ven">Venturo</span>
-    <span class="marquee-item brand-bug">Bugatti</span>
-    <span class="marquee-item brand-alb">Alberto</span>
-    <span class="marquee-item brand-pac">Paciotti</span>
-    <span class="marquee-item brand-4us">4US</span>
-    <span class="marquee-item brand-ms">Milestone</span>
-    <span class="marquee-item brand-gv">George V</span>
-    <span class="marquee-item brand-rr">Rock Revival</span>
-    <span class="marquee-item brand-pb">Psycho Bunny</span>
-    <span class="marquee-item brand-aff">A Fish Named Fred</span>
-    <span class="marquee-item brand-ven">Venturo</span>
-    <span class="marquee-item brand-bug">Bugatti</span>
-    <span class="marquee-item brand-alb">Alberto</span>
-    <span class="marquee-item brand-pac">Paciotti</span>
-    <span class="marquee-item brand-4us">4US</span>
-    <span class="marquee-item brand-ms">Milestone</span>
+<section class="marquee-section" aria-label="Brand Partners">
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span class="marquee-item brand-gv">George V</span>
+      <span class="marquee-item brand-rr">Rock Revival</span>
+      <span class="marquee-item brand-pb">Psycho Bunny</span>
+      <span class="marquee-item brand-aff">A Fish Named Fred</span>
+      <span class="marquee-item brand-ven">Venturo</span>
+      <span class="marquee-item brand-bug">Bugatti</span>
+      <span class="marquee-item brand-alb">Alberto</span>
+      <span class="marquee-item brand-pac">Paciotti</span>
+      <span class="marquee-item brand-4us">4US</span>
+      <span class="marquee-item brand-ms">Milestone</span>
+    </div>
+    <!-- Duplicate for seamless infinite loop -->
+    <div class="marquee-track" aria-hidden="true">
+      <span class="marquee-item brand-gv">George V</span>
+      <span class="marquee-item brand-rr">Rock Revival</span>
+      <span class="marquee-item brand-pb">Psycho Bunny</span>
+      <span class="marquee-item brand-aff">A Fish Named Fred</span>
+      <span class="marquee-item brand-ven">Venturo</span>
+      <span class="marquee-item brand-bug">Bugatti</span>
+      <span class="marquee-item brand-alb">Alberto</span>
+      <span class="marquee-item brand-pac">Paciotti</span>
+      <span class="marquee-item brand-4us">4US</span>
+      <span class="marquee-item brand-ms">Milestone</span>
+    </div>
   </div>
 </section>
 
@@ -453,6 +632,8 @@ body{font-family:var(--font-sans);background:var(--bg-deep);color:var(--text-pri
     <p class="footer-copy">&copy; 2024 X-SEPTION. Est. 1991. All rights reserved.</p>
   </div>
 </footer>
+
+</div><!-- /#main-content -->
 
 <!-- PRODUCT MODAL -->
 <div class="modal-overlay" id="productModal">
@@ -693,8 +874,9 @@ window.addEventListener('scroll', () => {
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hidden');
+    document.getElementById('main-content').classList.add('visible');
     initAnimations();
-  }, 2200);
+  }, 2400); /* synced with CSS animation total duration (2.0s bar + 0.4s buffer) */
 });
 
 function initAnimations() {
