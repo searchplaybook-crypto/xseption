@@ -1,16 +1,31 @@
-# X-SEPTION | Strategic Sovereignty
-X-SEPTION is a premium curated fashion portal and strategic digital optimization platform. 
+# X-SEPTION
 
-## Services
-- Visibility_SEO: SERP optimization and local search dominance.
-- Privacy_Reputation: Online reputation management and digital hygiene.
-- Safety_Health: Cybersecurity health checks and data protection.
+> Luxury menswear boutique in Johannesburg, established in 1991, with two stores: Nelson Mandela Square in Sandton and Eastgate Shopping Centre in Bedfordview. The edit covers European formal wear and tailoring, Italian leather footwear, casual wear and limited drops. Stock changes quickly, so availability and sizes are confirmed on WhatsApp.
 
-## Core Links
-- Portal: https://searchplaybook-crypto.github.io/xseption/
-- Strategy: https://searchplaybook-crypto.github.io/SearchPlaybook/
-- Assets: https://github.com/searchplaybook-crypto/xseption/tree/main/assets
+Tagline: Curated. Not Crowded.
 
-## Navigation
-The site utilizes a responsive grid layout to showcase luxury brand partners including George V, R2 Amsterdam, and Paciotti.
+## Stores
 
+- Nelson Mandela Square: Shop 39, Nelson Mandela Square, Sandton, Gauteng 2196. Telephone 010 226 9475.
+- Eastgate: Shop U123, Upper Level, Eastgate Shopping Centre, 43 Bradford Road, Bedfordview, Gauteng 2008. Telephone 011 622 3511.
+- WhatsApp concierge (both stores): +27 72 275 6933, https://wa.me/27722756933
+
+## The edit
+
+- [Lookbook home](https://searchplaybook-crypto.github.io/xseption/): the entrance, about the boutique and the latest Instagram drops
+- [Shoes and sneakers](https://searchplaybook-crypto.github.io/xseption/#shoes): dress shoes, boots and sneakers
+- [Jeans and pants](https://searchplaybook-crypto.github.io/xseption/#bottoms): denim and trousers
+- [Tops and jackets](https://searchplaybook-crypto.github.io/xseption/#tops): shirts, polos, blazers and jackets
+- [Formal edit](https://searchplaybook-crypto.github.io/xseption/?line=formal#shoes) and [casual edit](https://searchplaybook-crypto.github.io/xseption/?line=casual#tops)
+- [FAQ](https://searchplaybook-crypto.github.io/xseption/#faq): opening hours, the WhatsApp concierge, houses carried, sold-out pieces and checking stock before a visit
+- [Find us](https://searchplaybook-crypto.github.io/xseption/#visit): maps and telephone numbers for both stores
+- [Instagram @xseption_est.1991](https://www.instagram.com/xseption_est.1991/): every new drop is posted here first
+
+## Houses carried
+
+A Fish Named Fred, ALBERTO, Bruno Banani, bugatti, Cesare Paciotti, Avenue George V Paris, Jo Ghost, Milestone, Psycho Bunny, R2 Amsterdam, Rock Revival, Venturo, XPOOOS.
+
+## Notes
+
+- Products on the site are Instagram posts from the boutique, not an online shop. To buy or hold a piece, message the WhatsApp concierge with the post link and size.
+- Sold-out pieces are removed from the site.

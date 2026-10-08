@@ -1,19 +1,31 @@
-X-Seption | Official HQ
-The authoritative digital home for X-Seption. This repository serves as the high-performance, mobile-responsive catalog interface for our boutique locations. Designed for SEO authority, brand sovereignty, and team-managed efficiency.
-📍 Boutique Locations
-Eastgate HQ: Administrative Authority & Primary Source of Truth.
-Mandela Square: Retail Node.
-🚀 Technical Standards
-Architecture: Static-site generation for instantaneous load times and zero-cost hosting.
-SEO: Hard-coded JSON-LD schema defining ClothingStore entities at Eastgate and Mandela Square to ensure Google Search Engine (GSE) verification.
-Maintenance: Owner-operated structure—all inventory updates are managed via a single inventory.json file.
-🛠️ Operational Workflow (Set & Forget)
-Edit: Update the data/inventory.json file to reflect current brand availability at each location.
-Commit: Push changes directly to the main branch.
-Deploy: GitHub Pages automatically propagates the updates to the live site.
-🔗 Connected Identity
-Official Instagram: @xseption_est.1991
-Concierge: WhatsApp Business API integration.
-🛡️ Digital Sovereignty
-This repository is the singular Source of Truth. All digital citations, maps, and social profiles are to be canonicalized to this web interface, ensuring the boutique maintains control over its brand narrative and search visibility.
-Curated. Not Crowded. Direct to the Source.# xseption
+# X-SEPTION lookbook
+
+The website of X-SEPTION, luxury menswear since 1991, at Nelson Mandela Square (Sandton) and Eastgate (Bedfordview). It is a single-page lookbook on GitHub Pages: every product is an Instagram post, and every enquiry goes to the WhatsApp concierge.
+
+Live site: https://searchplaybook-crypto.github.io/xseption/
+
+## What is in this repository
+
+| Path | What it is |
+|---|---|
+| `index.html` | The whole site: layout, styles and script in one file |
+| `assets/hero/` | Entrance photos: Eastgate (background) and Nelson Mandela Square (the doors) |
+| `assets/scenes/` | Store scenes for Shoes, Bottoms and Tops & jackets |
+| `assets/icons/` | X star icons for phone home screens and Google Search (the browser tab icon is built into `index.html`) |
+| `catalogue.json` | The list of Instagram posts shown on the site, written by the daily sync |
+| `scripts/sync-instagram.mjs` and `.github/workflows/sync-instagram.yml` | Optional daily Instagram sync |
+| `llms.txt` | Plain summary of the boutique for AI search tools |
+| `google0358e8a493fefd4f.html` | Google Search Console verification. Do not delete |
+| `SETUP.md` | Full setup and upkeep guide |
+
+## Adding a drop by hand
+
+Open `index.html`, tap the 3 dots (⋯) > Edit file, search for `var DROPS` and add one line per Instagram post:
+
+```
+['https://www.instagram.com/p/POST_CODE/', 'sneakers', 'casual', 'new'],
+```
+
+Groups: `shoes`, `sneakers`, `jeans`, `pants`, `tops`, `jackets`. Delete the line when the piece is gone. SETUP.md covers the automatic Instagram sync.
+
+Curated. Not Crowded.
