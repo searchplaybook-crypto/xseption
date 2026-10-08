@@ -1,21 +1,22 @@
 # X-SEPTION
 
-> Luxury menswear boutique in Johannesburg, established in 1991, with two stores: Nelson Mandela Square in Sandton and Eastgate Shopping Centre in Bedfordview. The edit covers European formal wear and tailoring, Italian leather footwear, casual wear and limited drops. Stock changes quickly, so availability and sizes are confirmed on WhatsApp.
+> Luxury menswear boutique in Johannesburg, established in 1991, with two stores: Nelson Mandela Square in Sandton and Eastgate Shopping Centre in Bedfordview. The edit covers European formal wear and tailoring, Italian leather footwear, casual wear, jackets, underwear, swimwear, socks and limited drops. Stock changes quickly, so availability and sizes are confirmed on WhatsApp.
 
 Tagline: Curated. Not Crowded.
 
 ## Stores
 
-- Nelson Mandela Square: Shop 39, Nelson Mandela Square, Sandton, Gauteng 2196. Telephone 010 226 9475.
+- Nelson Mandela Square: Shop 39, Retail Lower Level, Nelson Mandela Square, Sandton, Gauteng 2196. Telephone 010 226 9475.
 - Eastgate: Shop U123, Upper Level, Eastgate Shopping Centre, 43 Bradford Road, Bedfordview, Gauteng 2008. Telephone 011 622 3511.
 - WhatsApp concierge (both stores): +27 72 275 6933, https://wa.me/27722756933
 
 ## The edit
 
 - [Lookbook home](https://searchplaybook-crypto.github.io/xseption/): the entrance, about the boutique and the latest Instagram drops
-- [Shoes and sneakers](https://searchplaybook-crypto.github.io/xseption/#shoes): dress shoes, boots and sneakers
-- [Jeans and pants](https://searchplaybook-crypto.github.io/xseption/#bottoms): denim and trousers
-- [Tops and jackets](https://searchplaybook-crypto.github.io/xseption/#tops): shirts, polos, blazers and jackets
+- [Tops and jackets](https://searchplaybook-crypto.github.io/xseption/#tops): shirts, polos, tees and jackets
+- [Jeans and pants](https://searchplaybook-crypto.github.io/xseption/#bottoms): pants, denim, and Bruno Banani underwear and swimwear
+- [Shoes and sneakers](https://searchplaybook-crypto.github.io/xseption/#shoes): formal shoes, casual pairs and XPOOOS socks
+- [The table](https://searchplaybook-crypto.github.io/xseption/#wardrobe): three looks with the house behind each piece
 - [Formal edit](https://searchplaybook-crypto.github.io/xseption/?line=formal#shoes) and [casual edit](https://searchplaybook-crypto.github.io/xseption/?line=casual#tops)
 - [FAQ](https://searchplaybook-crypto.github.io/xseption/#faq): opening hours, the WhatsApp concierge, houses carried, sold-out pieces and checking stock before a visit
 - [Find us](https://searchplaybook-crypto.github.io/xseption/#visit): maps and telephone numbers for both stores
@@ -23,7 +24,19 @@ Tagline: Curated. Not Crowded.
 
 ## Houses carried
 
-A Fish Named Fred, ALBERTO, Bruno Banani, bugatti, Cesare Paciotti, Avenue George V Paris, Jo Ghost, Milestone, Psycho Bunny, R2 Amsterdam, Rock Revival, Venturo, XPOOOS.
+- A Fish Named Fred: formal and casual
+- ALBERTO: pants and denim, formal and casual
+- Avenue George V Paris: casual
+- Bruno Banani: underwear and swimwear
+- bugatti: formal and casual
+- Cesare Paciotti: shoes, formal and casual
+- Jo Ghost: formal shoes and casual pairs
+- Milestone: outerwear jackets, semi-formal to casual
+- Psycho Bunny: casual
+- R2 Amsterdam: formal and casual
+- Rock Revival: casual denim
+- Venturo: casual
+- XPOOOS: premium fashionable socks
 
 ## Notes
 

@@ -11,6 +11,7 @@ Live site: https://searchplaybook-crypto.github.io/xseption/
 | `index.html` | The whole site: layout, styles and script in one file |
 | `assets/hero/` | Entrance photos: Eastgate (background) and Nelson Mandela Square (the doors) |
 | `assets/scenes/` | Store scenes for Shoes, Bottoms and Tops & jackets |
+| `assets/wardrobe/` | The wardrobe table (nine generic pieces) that the light moves across |
 | `assets/icons/` | X star icons for phone home screens and Google Search (the browser tab icon is built into `index.html`) |
 | `catalogue.json` | The list of Instagram posts shown on the site, written by the daily sync |
 | `scripts/sync-instagram.mjs` and `.github/workflows/sync-instagram.yml` | Optional daily Instagram sync |
@@ -26,6 +27,6 @@ Open `index.html`, tap the 3 dots (⋯) > Edit file, search for `var DROPS` and 
 ['https://www.instagram.com/p/POST_CODE/', 'sneakers', 'casual', 'new'],
 ```
 
-Groups: `shoes`, `sneakers`, `jeans`, `pants`, `tops`, `jackets`. Delete the line when the piece is gone. SETUP.md covers the automatic Instagram sync.
+Groups: `shoes`, `sneakers`, `socks`, `jeans`, `pants`, `underwear`, `tops`, `jackets`. Delete the line when the piece is gone. SETUP.md covers the automatic Instagram sync.
 
 Curated. Not Crowded.

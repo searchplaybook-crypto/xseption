@@ -287,6 +287,52 @@ p{margin:0 0 1rem}
 .editbar__meta a{color:var(--accent-ink);text-decoration:none}
 @media (min-width:1100px){.editbar__meta{display:block}}
 
+/* ---------- The wardrobe: spotlight and house pills ---------- */
+@property --lx{syntax:'<percentage>';inherits:true;initial-value:28.6%}
+@property --ly{syntax:'<percentage>';inherits:true;initial-value:21.1%}
+@property --rw{syntax:'<percentage>';inherits:true;initial-value:12%}
+@property --rh{syntax:'<percentage>';inherits:true;initial-value:24%}
+.plano{padding-block:clamp(3.5rem,9vw,6rem) clamp(1rem,3vw,2rem)}
+.plano__head{max-width:46rem;margin-bottom:clamp(1.25rem,3vw,2rem)}
+.plano__frame{position:relative;margin:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);aspect-ratio:1408/768;background:#0D0C0B;--z:1}
+.plano__stage{position:absolute;left:0;top:0;width:calc(100% * var(--z));aspect-ratio:1408/768;--lx:28.6%;--ly:21.1%;--rw:12%;--rh:24%;transition:transform .9s cubic-bezier(.6,0,.2,1),--lx .9s cubic-bezier(.6,0,.2,1),--ly .9s cubic-bezier(.6,0,.2,1),--rw .9s ease,--rh .9s ease;will-change:transform}
+.plano__img{display:block;width:100%;height:100%;object-fit:cover}
+.plano__shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse var(--rw) var(--rh) at var(--lx) var(--ly),rgba(8,7,6,0) 0%,rgba(8,7,6,.06) 40%,rgba(8,7,6,.5) 80%,rgba(8,7,6,.78) 100%)}
+.plano__glow{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(ellipse var(--rw) var(--rh) at var(--lx) var(--ly),rgba(255,206,140,.09),rgba(255,206,140,0) 70%)}
+.plano__spot{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);transform:translate(-50%,-50%);margin:0;padding:0;border:0;border-radius:12px;background:transparent;cursor:pointer}
+.plano__spot:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.plano__pills{position:absolute;inset:0;pointer-events:none}
+.pill{position:absolute;left:var(--px);top:var(--py);z-index:2;pointer-events:auto;display:inline-flex;align-items:center;gap:.6rem;padding:.3rem 1rem .3rem .3rem;border:1px solid rgba(201,169,97,.75);border-radius:999px;background:#F6F2EA;color:#1A1815;box-shadow:0 12px 32px rgba(0,0,0,.45),0 0 0 5px rgba(255,214,160,.12);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transform:translate(-50%,-50%)}
+.pill:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.pill__logo{display:flex;align-items:center;justify-content:center;height:30px;min-width:30px;max-width:110px;padding:3px 10px;border-radius:999px;background:#fff}
+.pill__logo img{display:block;height:22px;width:auto;max-width:90px;object-fit:contain;mix-blend-mode:multiply}
+.pill__logo .house__name{font-family:var(--font-display);font-size:.82rem;letter-spacing:.02em;text-transform:none;white-space:nowrap;color:#1A1815}
+.pill__txt{display:flex;flex-direction:column;gap:.1rem;line-height:1.2}
+.house__at{display:block;margin-top:.25rem;font-size:.78rem;letter-spacing:.02em;color:var(--accent-ink)}
+.pill__line{font-size:.54rem;letter-spacing:.14em;color:#7E6224}
+.pill__house{display:none;font-family:var(--font-display);font-size:.84rem;letter-spacing:.02em;text-transform:none;color:#1A1815}
+.pill--named .pill__house{display:inline}
+.js .pill{opacity:0;visibility:hidden;transform:translate(-50%,-50%) scale(.92);transition:opacity .4s ease,transform .4s ease,visibility 0s linear .4s}
+.js .pill.is-on{opacity:1;visibility:visible;transform:translate(-50%,-50%);transition:opacity .45s ease .5s,transform .45s ease .5s,visibility 0s linear 0s}
+html:not(.js) .plano__shade,html:not(.js) .plano__glow{display:none}
+.plano__chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.plano__chip{min-height:40px;padding:.5rem .95rem;border:1px solid var(--line-2);border-radius:999px;background:transparent;color:var(--ink-2);font:inherit;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,background-color .3s}
+.plano__chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent-ink);background:rgba(201,169,97,.08)}
+.plano__chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.plano__note{margin:.75rem 0 0;font-size:.75rem;color:var(--muted)}
+@media (max-width:759.98px){
+  .plano__frame{aspect-ratio:4/5;--z:2.3}
+  .pill{left:50%;top:auto;bottom:14px;max-width:calc(100% - 24px)}
+  .js .pill,.js .pill.is-on{transform:translate(-50%,0)}
+  .js .pill:not(.is-on){transform:translate(-50%,8px)}
+  .plano__chips{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--gutter) * -1);padding:0 var(--gutter) .25rem;scrollbar-width:none}
+  .plano__chips::-webkit-scrollbar{display:none}
+  .plano__chip{flex:0 0 auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .plano__stage,.js .pill,.js .pill.is-on{transition:none}
+}
+
 /* ---------- Collections ---------- */
 .collection{padding-block:clamp(3.5rem,9vw,6rem) clamp(.5rem,2vw,1.5rem)}
 .collection--latest{padding-block:clamp(2.5rem,6vw,3.5rem) 0}
@@ -523,7 +569,7 @@ p{margin:0 0 1rem}
       "parentOrganization": { "@id": "https://searchplaybook-crypto.github.io/xseption/#org" },
       "url": "https://searchplaybook-crypto.github.io/xseption/#visit",
       "telephone": "+27102269475",
-      "address": { "@type": "PostalAddress", "streetAddress": "Shop 39, Nelson Mandela Square", "addressLocality": "Sandton", "addressRegion": "Gauteng", "postalCode": "2196", "addressCountry": "ZA" },
+      "address": { "@type": "PostalAddress", "streetAddress": "Shop 39, Retail Lower Level, Nelson Mandela Square", "addressLocality": "Sandton", "addressRegion": "Gauteng", "postalCode": "2196", "addressCountry": "ZA" },
       "hasMap": "https://www.google.com/maps/search/?api=1&query=X-SEPTION%20Nelson%20Mandela%20Square%20Sandton"
     },
     {
@@ -568,9 +614,9 @@ p{margin:0 0 1rem}
       <a class="brandmark" href="#top" aria-label="X-SEPTION, back to the entrance"><img class="brandmark__logo" data-brandlogo src="https://ik.imagekit.io/wemustcreate/CLIENTS%20/logoxtf.png?updatedAt=1783346231258&amp;tr=h-96" alt="" width="152" height="48" decoding="async"><span class="brandmark__text"><span class="brandmark__x">X</span>-SEPTION</span></a>
       <nav class="nav" id="menu" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#shoes">Shoes</a>
-        <a href="#bottoms">Bottoms</a>
         <a href="#tops">Tops &amp; jackets</a>
+        <a href="#bottoms">Bottoms</a>
+        <a href="#shoes">Shoes</a>
         <a href="#faq">FAQ</a>
         <a href="#visit">Visit</a>
       </nav>
@@ -631,7 +677,7 @@ p{margin:0 0 1rem}
       <p class="about__tag">European Craftsmanship. Local Style Authority.</p>
       <p class="lede">Established in 1991, X-SEPTION is a premier South African menswear destination delivering an uncompromising luxury retail experience. For over three decades, we have curated collections for the discerning gentleman, offering a seamless bridge between world-class international fashion brands and local style prestige.</p>
       <p>True style speaks every language. Whether you are navigating executive boardrooms in Sandton, making a statement at high-profile celebrations, or unwinding at weekend coastal retreats, our boutique offerings bring together high-end Euro-centric apparel, fine Italian leather footwear, exclusive limited drops and structured wardrobe tailoring.</p>
-      <p>Discover our curated formal wear, bespoke styling services and timeless European fits at our flagship locations: <a href="#visit">Nelson Mandela Square in Sandton (Shop 39)</a> and <a href="#visit">Eastgate Shopping Centre (Shop U123)</a>.</p>
+      <p>Discover our curated formal wear, bespoke styling services and timeless European fits at our flagship locations: <a href="#visit">Nelson Mandela Square in Sandton (Shop 39, Retail Lower Level)</a> and <a href="#visit">Eastgate Shopping Centre (Shop U123)</a>.</p>
     </div>
     <div class="defines reveal">
       <h3 class="defines__title">What defines us</h3>
@@ -659,7 +705,7 @@ p{margin:0 0 1rem}
   </div>
 </section>
 
-<!-- ================= 03-05 The edit ================= -->
+<!-- ================= 03-05 The showroom: tops, bottoms, shoes ================= -->
 <div class="collections" id="edit">
   <div class="editbar">
     <div class="wrap editbar__in">
@@ -669,7 +715,7 @@ p{margin:0 0 1rem}
         <button class="seg__btn" type="button" data-line="formal" aria-pressed="false">Formal</button>
       </div>
       <nav class="editbar__jump" aria-label="Jump to a category">
-        <a href="#shoes">Shoes</a><a href="#bottoms">Bottoms</a><a href="#tops">Tops &amp; jackets</a>
+        <a href="#tops">Tops &amp; jackets</a><a href="#bottoms">Bottoms</a><a href="#shoes">Shoes</a><a href="#wardrobe">The table</a>
       </nav>
       <p class="editbar__meta"><span data-updated>Drops post to Instagram first</span> · <a data-ig href="https://www.instagram.com/xseption_est.1991/" target="_blank" rel="noopener noreferrer">@xseption_est.1991</a></p>
     </div>
@@ -683,73 +729,14 @@ p{margin:0 0 1rem}
     </div>
   </section>
 
-  <!-- 03 Shoes and sneakers -->
-  <section class="collection" id="shoes" aria-labelledby="shoes-title">
-    <div class="wrap">
-      <div class="sec-intro">
-        <header class="sec-head reveal">
-          <p class="eyebrow"><span class="eyebrow__n">03</span>The shoe wall</p>
-          <h2 id="shoes-title" class="sec-title">Shoes <em>&amp; sneakers</em></h2>
-          <p class="sec-lede">Cesare Paciotti dress shoes for the boardroom, sneakers for the weekend, and Jo Ghost leather that bridges both. Ask about any post to check it in store.</p>
-          <p class="sec-count" data-count="shoes" aria-live="polite"></p>
-        </header>
-        <div class="scene-wrap">
-          <figure class="scene scene--shoes" data-scene data-scene-key="shoes">
-            <span class="scene__tag scene__tag--l scene__tag--photo" aria-hidden="true">Formal</span>
-            <span class="scene__tag scene__tag--r scene__tag--photo" aria-hidden="true">Casual</span>
-          </figure>
-        </div>
-      </div>
-      <div class="subgroup" data-sub="shoes" hidden>
-        <h3 class="subhead">Shoes <span class="subhead__n" data-subcount="shoes"></span></h3>
-        <div class="grid" data-grid="shoes" role="list"></div>
-      </div>
-      <div class="subgroup" data-sub="sneakers" hidden>
-        <h3 class="subhead">Sneakers <span class="subhead__n" data-subcount="sneakers"></span></h3>
-        <div class="grid" data-grid="sneakers" role="list"></div>
-      </div>
-      <div class="drop-empty" data-empty="shoes" hidden></div>
-      <noscript><p class="noscript">Turn on JavaScript to see the latest Instagram drops, or call X-SEPTION on 010 226 9475 to check what is in store.</p></noscript>
-    </div>
-  </section>
-
-  <!-- 04 Pants -->
-  <section class="collection" id="bottoms" aria-labelledby="pants-title">
-    <div class="wrap">
-      <div class="sec-intro">
-        <header class="sec-head reveal">
-          <p class="eyebrow"><span class="eyebrow__n">04</span>Bottoms</p>
-          <h2 id="pants-title" class="sec-title">Jeans <em>&amp; pants</em></h2>
-          <p class="sec-lede">ALBERTO and Rock Revival denim for city days and late nights, bugatti and ALBERTO trousers for the meeting and the dinner after it.</p>
-          <p class="sec-count" data-count="bottoms" aria-live="polite"></p>
-        </header>
-        <div class="scene-wrap">
-          <figure class="scene scene--pants" data-scene data-scene-key="bottoms">
-            <span class="scene__tag scene__tag--l scene__tag--photo" aria-hidden="true">Formal</span>
-            <span class="scene__tag scene__tag--r scene__tag--photo" aria-hidden="true">Casual</span>
-          </figure>
-        </div>
-      </div>
-      <div class="subgroup" data-sub="jeans" hidden>
-        <h3 class="subhead">Jeans <span class="subhead__n" data-subcount="jeans"></span></h3>
-        <div class="grid" data-grid="jeans" role="list"></div>
-      </div>
-      <div class="subgroup" data-sub="pants" hidden>
-        <h3 class="subhead">Pants <span class="subhead__n" data-subcount="pants"></span></h3>
-        <div class="grid" data-grid="pants" role="list"></div>
-      </div>
-      <div class="drop-empty" data-empty="bottoms" hidden></div>
-    </div>
-  </section>
-
-  <!-- 05 Tops and jackets -->
+  <!-- 03 Tops and jackets -->
   <section class="collection" id="tops" aria-labelledby="tops-title">
     <div class="wrap">
       <div class="sec-intro">
         <header class="sec-head reveal">
-          <p class="eyebrow"><span class="eyebrow__n">05</span>The rails</p>
+          <p class="eyebrow"><span class="eyebrow__n">03</span>The rails</p>
           <h2 id="tops-title" class="sec-title">Tops <em>&amp; jackets</em></h2>
-          <p class="sec-lede">Two rails, one wardrobe. Formal: bugatti and Milestone tailoring with R2 Amsterdam shirting. Casual: Psycho Bunny, A Fish Named Fred, Avenue George V Paris and Milestone leather.</p>
+          <p class="sec-lede">Two rails, one wardrobe. R2 Amsterdam, A Fish Named Fred and bugatti dress both ways, formal and casual. Psycho Bunny, Avenue George V Paris and Venturo keep it casual, and Milestone brings outerwear jackets, semi-formal to casual.</p>
           <p class="sec-count" data-count="tops" aria-live="polite"></p>
         </header>
         <div class="scene-wrap">
@@ -771,26 +758,134 @@ p{margin:0 0 1rem}
     </div>
   </section>
 
-  <section class="igband" aria-label="New drops on Instagram">
+  <!-- 04 Jeans and pants -->
+  <section class="collection" id="bottoms" aria-labelledby="pants-title">
     <div class="wrap">
-      <div class="igband__in reveal">
-        <div>
-          <p class="eyebrow">New drops</p>
-          <p class="igband__text" data-ig-text>New pieces land on Instagram first. Follow the boutique to see each drop as it arrives, then ask before it is gone.</p>
+      <div class="sec-intro">
+        <header class="sec-head reveal">
+          <p class="eyebrow"><span class="eyebrow__n">04</span>Bottoms</p>
+          <h2 id="pants-title" class="sec-title">Jeans <em>&amp; pants</em></h2>
+          <p class="sec-lede">ALBERTO pants and denim and bugatti trousers, formal or casual. Rock Revival denim for casual days, and Bruno Banani underwear and swimwear.</p>
+          <p class="sec-count" data-count="bottoms" aria-live="polite"></p>
+        </header>
+        <div class="scene-wrap">
+          <figure class="scene scene--pants" data-scene data-scene-key="bottoms">
+            <span class="scene__tag scene__tag--l scene__tag--photo" aria-hidden="true">Formal</span>
+            <span class="scene__tag scene__tag--r scene__tag--photo" aria-hidden="true">Casual</span>
+          </figure>
         </div>
-        <a class="btn btn--ghost" data-ig href="https://www.instagram.com/xseption_est.1991/" target="_blank" rel="noopener noreferrer">
-          <svg class="ui" aria-hidden="true"><use href="#u-camera"/></svg>@xseption_est.1991
-        </a>
       </div>
+      <div class="subgroup" data-sub="jeans" hidden>
+        <h3 class="subhead">Jeans <span class="subhead__n" data-subcount="jeans"></span></h3>
+        <div class="grid" data-grid="jeans" role="list"></div>
+      </div>
+      <div class="subgroup" data-sub="pants" hidden>
+        <h3 class="subhead">Pants <span class="subhead__n" data-subcount="pants"></span></h3>
+        <div class="grid" data-grid="pants" role="list"></div>
+      </div>
+      <div class="subgroup" data-sub="underwear" hidden>
+        <h3 class="subhead">Underwear &amp; swimwear <span class="subhead__n" data-subcount="underwear"></span></h3>
+        <div class="grid" data-grid="underwear" role="list"></div>
+      </div>
+      <div class="drop-empty" data-empty="bottoms" hidden></div>
+    </div>
+  </section>
+
+  <!-- 05 Shoes and sneakers -->
+  <section class="collection" id="shoes" aria-labelledby="shoes-title">
+    <div class="wrap">
+      <div class="sec-intro">
+        <header class="sec-head reveal">
+          <p class="eyebrow"><span class="eyebrow__n">05</span>The shoe wall</p>
+          <h2 id="shoes-title" class="sec-title">Shoes <em>&amp; sneakers</em></h2>
+          <p class="sec-lede">Cesare Paciotti and Jo Ghost, formal shoes for the boardroom and casual pairs for the weekend, finished with XPOOOS premium fashionable socks. Ask about any post to check it in store.</p>
+          <p class="sec-count" data-count="shoes" aria-live="polite"></p>
+        </header>
+        <div class="scene-wrap">
+          <figure class="scene scene--shoes" data-scene data-scene-key="shoes">
+            <span class="scene__tag scene__tag--l scene__tag--photo" aria-hidden="true">Formal</span>
+            <span class="scene__tag scene__tag--r scene__tag--photo" aria-hidden="true">Casual</span>
+          </figure>
+        </div>
+      </div>
+      <div class="subgroup" data-sub="shoes" hidden>
+        <h3 class="subhead">Shoes <span class="subhead__n" data-subcount="shoes"></span></h3>
+        <div class="grid" data-grid="shoes" role="list"></div>
+      </div>
+      <div class="subgroup" data-sub="sneakers" hidden>
+        <h3 class="subhead">Sneakers <span class="subhead__n" data-subcount="sneakers"></span></h3>
+        <div class="grid" data-grid="sneakers" role="list"></div>
+      </div>
+      <div class="subgroup" data-sub="socks" hidden>
+        <h3 class="subhead">Socks <span class="subhead__n" data-subcount="socks"></span></h3>
+        <div class="grid" data-grid="socks" role="list"></div>
+      </div>
+      <div class="drop-empty" data-empty="shoes" hidden></div>
+      <noscript><p class="noscript">Turn on JavaScript to see the latest Instagram drops, or call X-SEPTION on 010 226 9475 to check what is in store.</p></noscript>
     </div>
   </section>
 </div>
 
-<!-- ================= 06 FAQ ================= -->
+<!-- ================= 06 The table: light moves across the looks, a pill names the house ================= -->
+<section class="plano" id="wardrobe" aria-labelledby="wardrobe-title">
+  <div class="wrap">
+    <header class="sec-head plano__head reveal">
+      <p class="eyebrow"><span class="eyebrow__n">06</span>The table</p>
+      <h2 id="wardrobe-title" class="sec-title">Three looks, <em>one table</em></h2>
+      <p class="sec-lede">The showroom on one table: three looks, nine pieces, nine houses. Follow the light, and each piece shows the house we carry for it. Tap a piece, then its label, to open that rail, shelf or wall.</p>
+    </header>
+    <figure class="plano__frame" data-plano>
+      <div class="plano__stage">
+        <img class="plano__img" src="assets/wardrobe/wardrobe.webp" alt="Flat lay of nine menswear pieces on linen in three looks: a black tee, polo and dress shoes; a patterned shirt, chinos and sneakers; a white tee, jeans and a cap" width="1408" height="768" loading="lazy" decoding="async">
+        <span class="plano__shade" aria-hidden="true"></span>
+        <span class="plano__glow" aria-hidden="true"></span>
+        <button class="plano__spot" type="button" data-i="0" style="--x:28.6%;--y:21.1%;--w:13.4%;--h:27%" aria-label="Black tee: Avenue George V Paris, casual"></button>
+        <button class="plano__spot" type="button" data-i="1" style="--x:28.0%;--y:50.9%;--w:13.6%;--h:28%" aria-label="Polo: A Fish Named Fred, formal and casual"></button>
+        <button class="plano__spot" type="button" data-i="2" style="--x:27.1%;--y:80.7%;--w:16.4%;--h:22%" aria-label="Dress shoes: Cesare Paciotti, formal and casual"></button>
+        <button class="plano__spot" type="button" data-i="3" style="--x:50.5%;--y:19.7%;--w:12.0%;--h:29%" aria-label="Shirt: R2 Amsterdam, formal and casual"></button>
+        <button class="plano__spot" type="button" data-i="4" style="--x:49.7%;--y:51.2%;--w:15.0%;--h:27%" aria-label="Chinos: bugatti, formal and casual"></button>
+        <button class="plano__spot" type="button" data-i="5" style="--x:50.4%;--y:80.2%;--w:15.6%;--h:22%" aria-label="Sneakers: Jo Ghost, formal and casual"></button>
+        <button class="plano__spot" type="button" data-i="6" style="--x:72.7%;--y:20.8%;--w:13.4%;--h:27%" aria-label="White tee: Venturo, casual"></button>
+        <button class="plano__spot" type="button" data-i="7" style="--x:72.7%;--y:51.2%;--w:14.6%;--h:28%" aria-label="Jeans: Rock Revival, casual"></button>
+        <button class="plano__spot" type="button" data-i="8" style="--x:73.9%;--y:79.7%;--w:12.6%;--h:28%" aria-label="Cap: Psycho Bunny, casual"></button>
+      </div>
+      <div class="plano__pills">
+      <a class="pill" href="#tops" data-i="0" data-line="casual" style="--px:38.2%;--py:30.3%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/georgev.jpg?updatedAt=1791131055975&amp;tr=t-true,h-120" alt="Avenue George V Paris" data-logo="georgev.jpg" data-house="Avenue George V Paris" loading="lazy" decoding="async"></span><span class="pill__house">Avenue George V Paris</span><span class="pill__txt">Black tee<span class="pill__line">Casual</span></span></a>
+      <a class="pill" href="#tops" data-i="1" data-line="all" style="--px:37.8%;--py:61.1%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/a_fish_named_fred.png?updatedAt=1791131056752&amp;tr=t-true,h-120" alt="A Fish Named Fred" data-logo="a_fish_named_fred.png" data-house="A Fish Named Fred" loading="lazy" decoding="async"></span><span class="pill__house">A Fish Named Fred</span><span class="pill__txt">Polo<span class="pill__line">Formal &amp; casual</span></span></a>
+      <a class="pill" href="#shoes" data-i="2" data-line="all" style="--px:38.4%;--py:87.2%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/dagger.png?tr=t-true,h-120" alt="Cesare Paciotti" data-logo="dagger.png" data-house="Cesare Paciotti" loading="lazy" decoding="async"></span><span class="pill__house">Cesare Paciotti</span><span class="pill__txt">Dress shoes<span class="pill__line">Formal &amp; casual</span></span></a>
+      <a class="pill" href="#tops" data-i="3" data-line="all" style="--px:59.8%;--py:30.3%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/r2.png?updatedAt=1791131056775&amp;tr=t-true,h-120" alt="R2 Amsterdam" data-logo="r2.png" data-house="R2 Amsterdam" loading="lazy" decoding="async"></span><span class="pill__house">R2 Amsterdam</span><span class="pill__txt">Shirt<span class="pill__line">Formal &amp; casual</span></span></a>
+      <a class="pill" href="#bottoms" data-i="4" data-line="all" style="--px:60.7%;--py:60.5%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/bugatti.png?updatedAt=1791131056023&amp;tr=t-true,h-120" alt="bugatti" data-logo="bugatti.png" data-house="bugatti" loading="lazy" decoding="async"></span><span class="pill__house">bugatti</span><span class="pill__txt">Chinos<span class="pill__line">Formal &amp; casual</span></span></a>
+      <a class="pill" href="#shoes" data-i="5" data-line="all" style="--px:61.6%;--py:87.4%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/joghost.png?updatedAt=1791131056361&amp;tr=t-true,h-120" alt="Jo Ghost" data-logo="joghost.png" data-house="Jo Ghost" loading="lazy" decoding="async"></span><span class="pill__house">Jo Ghost</span><span class="pill__txt">Sneakers<span class="pill__line">Formal &amp; casual</span></span></a>
+      <a class="pill" href="#tops" data-i="6" data-line="casual" style="--px:82.4%;--py:30.3%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/venturo.jpg?updatedAt=1791404992827&amp;tr=t-true,h-120" alt="Venturo" data-logo="venturo.jpg" data-house="Venturo" loading="lazy" decoding="async"></span><span class="pill__house">Venturo</span><span class="pill__txt">White tee<span class="pill__line">Casual</span></span></a>
+      <a class="pill" href="#bottoms" data-i="7" data-line="casual" style="--px:83.3%;--py:60.9%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/rockr.jpg?updatedAt=1791131056295&amp;tr=t-true,h-120" alt="Rock Revival" data-logo="rockr.jpg" data-house="Rock Revival" loading="lazy" decoding="async"></span><span class="pill__house">Rock Revival</span><span class="pill__txt">Jeans<span class="pill__line">Casual</span></span></a>
+      <a class="pill" href="#tops" data-i="8" data-line="casual" style="--px:84.0%;--py:87.6%"><span class="pill__logo"><img src="https://ik.imagekit.io/wemustcreate/logox/pshycho.png?updatedAt=1791131056790&amp;tr=t-true,h-120" alt="Psycho Bunny" data-logo="pshycho.png" data-house="Psycho Bunny" loading="lazy" decoding="async"></span><span class="pill__house">Psycho Bunny</span><span class="pill__txt">Cap<span class="pill__line">Casual</span></span></a>
+      </div>
+    </figure>
+    <div class="plano__chips" role="group" aria-label="Pieces on the table"><button class="plano__chip" type="button" data-i="0" aria-pressed="false">Black tee</button><button class="plano__chip" type="button" data-i="1" aria-pressed="false">Polo</button><button class="plano__chip" type="button" data-i="2" aria-pressed="false">Dress shoes</button><button class="plano__chip" type="button" data-i="3" aria-pressed="false">Shirt</button><button class="plano__chip" type="button" data-i="4" aria-pressed="false">Chinos</button><button class="plano__chip" type="button" data-i="5" aria-pressed="false">Sneakers</button><button class="plano__chip" type="button" data-i="6" aria-pressed="false">White tee</button><button class="plano__chip" type="button" data-i="7" aria-pressed="false">Jeans</button><button class="plano__chip" type="button" data-i="8" aria-pressed="false">Cap</button></div>
+    <p class="plano__note">Pieces are shown for styling, not as stock. Ask the concierge what is in store today.</p>
+  </div>
+</section>
+
+
+<section class="igband" aria-label="New drops on Instagram">
+  <div class="wrap">
+    <div class="igband__in reveal">
+      <div>
+        <p class="eyebrow">New drops</p>
+        <p class="igband__text" data-ig-text>New pieces land on Instagram first. Follow the boutique to see each drop as it arrives, then ask before it is gone.</p>
+      </div>
+      <a class="btn btn--ghost" data-ig href="https://www.instagram.com/xseption_est.1991/" target="_blank" rel="noopener noreferrer">
+        <svg class="ui" aria-hidden="true"><use href="#u-camera"/></svg>@xseption_est.1991
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 FAQ ================= -->
 <section class="faq" id="faq" aria-labelledby="faq-title">
   <div class="wrap faq__in">
     <header class="sec-head reveal">
-      <p class="eyebrow"><span class="eyebrow__n">06</span>The counter</p>
+      <p class="eyebrow"><span class="eyebrow__n">07</span>The counter</p>
       <h2 id="faq-title" class="sec-title">Questions, <em>answered</em></h2>
       <p class="sec-lede">Hours, the concierge and the houses on the floor. Anything else, ask on WhatsApp.</p>
     </header>
@@ -813,19 +908,19 @@ p{margin:0 0 1rem}
         <summary>Which houses do you carry?</summary>
         <div class="faq__a">
           <ul class="houses">
-            <li><span class="house house--sm"><img data-logo="a_fish_named_fred.png" src="https://ik.imagekit.io/wemustcreate/logox/a_fish_named_fred.png?updatedAt=1791131056752&amp;tr=t-true,h-120" alt="A Fish Named Fred" loading="lazy" decoding="async" data-house="A Fish Named Fred"></span><span><strong>A Fish Named Fred</strong>A playful, expressive menswear label whose visual identity uses colourful graphics and a fish emblem. Best suited to statement shirts, blazers, trousers and coordinated looks.</span></li>
-            <li><span class="house house--sm"><img data-logo="albertoj.jpg" src="https://ik.imagekit.io/wemustcreate/logox/albertoj.jpg?updatedAt=1791131056724&amp;tr=t-true,h-120" alt="ALBERTO" loading="lazy" decoding="async" data-house="ALBERTO"></span><span><strong>ALBERTO</strong>A European trousers and denim specialist suited to fit-led wardrobe foundations and polished casual bottoms.</span></li>
-            <li><span class="house house--sm"><img data-logo="brunub.png" src="https://ik.imagekit.io/wemustcreate/logox/brunub.png?updatedAt=1791131056324&amp;tr=t-true,h-120" alt="Bruno Banani" loading="lazy" decoding="async" data-house="Bruno Banani"></span><span><strong>Bruno Banani</strong>A German cult fashion and designer brand known for expressive underwear, nightwear, fragrances and statement casualwear.</span></li>
-            <li><span class="house house--sm"><img data-logo="bugatti.png" src="https://ik.imagekit.io/wemustcreate/logox/bugatti.png?updatedAt=1791131056023&amp;tr=t-true,h-120" alt="bugatti" loading="lazy" decoding="async" data-house="bugatti"></span><span><strong>bugatti</strong>A European smart-casual menswear label covering shirts, chinos, trousers, jeans, outerwear and related wardrobe staples.</span></li>
-            <li><span class="house house--sm"><img data-logo="dagger.png" src="https://ik.imagekit.io/wemustcreate/logox/dagger.png?tr=t-true,h-120" alt="Cesare Paciotti" loading="lazy" decoding="async" data-house="Cesare Paciotti"></span><span><strong>Cesare Paciotti</strong>An Italian footwear and accessories label associated with luxury fashion, Made-in-Italy craftsmanship and the signature dagger emblem.</span></li>
-            <li><span class="house house--sm"><img data-logo="georgev.jpg" src="https://ik.imagekit.io/wemustcreate/logox/georgev.jpg?updatedAt=1791131055975&amp;tr=t-true,h-120" alt="Avenue George V Paris" loading="lazy" decoding="async" data-house="Avenue George V Paris"></span><span><strong>Avenue George V Paris</strong>A statement-led Parisian casual wear label with graphic tops, coordinated casual pieces and bold visual motifs.</span></li>
-            <li><span class="house house--sm"><img data-logo="joghost.png" src="https://ik.imagekit.io/wemustcreate/logox/joghost.png?updatedAt=1791131056361&amp;tr=t-true,h-120" alt="Jo Ghost" loading="lazy" decoding="async" data-house="Jo Ghost"></span><span><strong>Jo Ghost</strong>An Italian footwear label with contemporary boots, shoes and textured leather styles, including distinctive tapered ankle boots.</span></li>
-            <li><span class="house house--sm"><img data-logo="milestone.png" src="https://ik.imagekit.io/wemustcreate/logox/milestone.png?updatedAt=1791131055969&amp;tr=t-true,h-120" alt="Milestone" loading="lazy" decoding="async" data-house="Milestone"></span><span><strong>Milestone</strong>An outerwear-focused European label known for seasonal jackets and leather-jacket styling.</span></li>
-            <li><span class="house house--sm"><img data-logo="pshychoblogo.webp" src="https://ik.imagekit.io/wemustcreate/logox/pshychoblogo.webp?updatedAt=1791131056812&amp;tr=t-true,h-120" alt="Psycho Bunny" loading="lazy" decoding="async" data-house="Psycho Bunny"></span><span><strong>Psycho Bunny</strong>A premium casualwear label associated with polos, shirts, caps and its recognisable bunny-and-crossbones emblem.</span></li>
-            <li><span class="house house--sm"><img data-logo="r2.png" src="https://ik.imagekit.io/wemustcreate/logox/r2.png?updatedAt=1791131056775&amp;tr=t-true,h-120" alt="R2 Amsterdam" loading="lazy" decoding="async" data-house="R2 Amsterdam"></span><span><strong>R2 Amsterdam</strong>A contemporary Dutch menswear label offering modern shirts, travel fabrics, herringbone textures and smart-casual staples.</span></li>
-            <li><span class="house house--sm"><img data-logo="rockr.jpg" src="https://ik.imagekit.io/wemustcreate/logox/rockr.jpg?updatedAt=1791131056295&amp;tr=t-true,h-120" alt="Rock Revival" loading="lazy" decoding="async" data-house="Rock Revival"></span><span><strong>Rock Revival</strong>A premium denim label known for multiple jean fits, bold washes and decorative detailing with a rebellious identity.</span></li>
-            <li><span class="house house--sm"><img data-logo="venturo.jpg" src="https://ik.imagekit.io/wemustcreate/logox/venturo.jpg?updatedAt=1791404992827&amp;tr=t-true,h-120" alt="Venturo" loading="lazy" decoding="async" data-house="Venturo"></span><span><strong>Venturo</strong>Known for delivering effortless confidence through custom-tailored cuts and meticulous fabric selection, the brand&#x27;s new line brings minimalist aesthetics and exceptional comfort to your wardrobe.</span></li>
-            <li><span class="house house--sm"><img data-logo="xpooos.png" src="https://ik.imagekit.io/wemustcreate/logox/xpooos.png?updatedAt=1791131058399&amp;tr=t-true,h-120" alt="XPOOOS" loading="lazy" decoding="async" data-house="XPOOOS"></span><span><strong>XPOOOS</strong>A premium European sock and hosiery label known for innovative fabric blends, bold artistic prints and distinctive foot fashion.</span></li>
+            <li><span class="house house--sm"><img data-logo="a_fish_named_fred.png" src="https://ik.imagekit.io/wemustcreate/logox/a_fish_named_fred.png?updatedAt=1791131056752&amp;tr=t-true,h-120" alt="A Fish Named Fred" loading="lazy" decoding="async" data-house="A Fish Named Fred"></span><span><strong>A Fish Named Fred</strong>A playful, expressive menswear label whose visual identity uses colourful graphics and a fish emblem. Best suited to statement shirts, blazers, trousers and coordinated looks. <span class="house__at">At X-SEPTION: formal and casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="albertoj.jpg" src="https://ik.imagekit.io/wemustcreate/logox/albertoj.jpg?updatedAt=1791131056724&amp;tr=t-true,h-120" alt="ALBERTO" loading="lazy" decoding="async" data-house="ALBERTO"></span><span><strong>ALBERTO</strong>A European trousers and denim specialist suited to fit-led wardrobe foundations and polished casual bottoms. <span class="house__at">At X-SEPTION: pants and denim, formal and casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="brunub.png" src="https://ik.imagekit.io/wemustcreate/logox/brunub.png?updatedAt=1791131056324&amp;tr=t-true,h-120" alt="Bruno Banani" loading="lazy" decoding="async" data-house="Bruno Banani"></span><span><strong>Bruno Banani</strong>A German cult fashion and designer brand known for expressive underwear, nightwear, fragrances and statement casualwear. <span class="house__at">At X-SEPTION: underwear and swimwear, in Jeans &amp; pants.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="bugatti.png" src="https://ik.imagekit.io/wemustcreate/logox/bugatti.png?updatedAt=1791131056023&amp;tr=t-true,h-120" alt="bugatti" loading="lazy" decoding="async" data-house="bugatti"></span><span><strong>bugatti</strong>A European smart-casual menswear label covering shirts, chinos, trousers, jeans, outerwear and related wardrobe staples. <span class="house__at">At X-SEPTION: formal and casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="dagger.png" src="https://ik.imagekit.io/wemustcreate/logox/dagger.png?tr=t-true,h-120" alt="Cesare Paciotti" loading="lazy" decoding="async" data-house="Cesare Paciotti"></span><span><strong>Cesare Paciotti</strong>An Italian footwear and accessories label associated with luxury fashion, Made-in-Italy craftsmanship and the signature dagger emblem. <span class="house__at">At X-SEPTION: shoes, formal and casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="georgev.jpg" src="https://ik.imagekit.io/wemustcreate/logox/georgev.jpg?updatedAt=1791131055975&amp;tr=t-true,h-120" alt="Avenue George V Paris" loading="lazy" decoding="async" data-house="Avenue George V Paris"></span><span><strong>Avenue George V Paris</strong>A statement-led Parisian casual wear label with graphic tops, coordinated casual pieces and bold visual motifs. <span class="house__at">At X-SEPTION: casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="joghost.png" src="https://ik.imagekit.io/wemustcreate/logox/joghost.png?updatedAt=1791131056361&amp;tr=t-true,h-120" alt="Jo Ghost" loading="lazy" decoding="async" data-house="Jo Ghost"></span><span><strong>Jo Ghost</strong>An Italian footwear label with contemporary boots, shoes and textured leather styles, including distinctive tapered ankle boots. <span class="house__at">At X-SEPTION: formal shoes and casual pairs.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="milestone.png" src="https://ik.imagekit.io/wemustcreate/logox/milestone.png?updatedAt=1791131055969&amp;tr=t-true,h-120" alt="Milestone" loading="lazy" decoding="async" data-house="Milestone"></span><span><strong>Milestone</strong>An outerwear-focused European label known for seasonal jackets and leather-jacket styling. <span class="house__at">At X-SEPTION: outerwear jackets, semi-formal to casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="pshychoblogo.webp" src="https://ik.imagekit.io/wemustcreate/logox/pshychoblogo.webp?updatedAt=1791131056812&amp;tr=t-true,h-120" alt="Psycho Bunny" loading="lazy" decoding="async" data-house="Psycho Bunny"></span><span><strong>Psycho Bunny</strong>A premium casualwear label associated with polos, shirts, caps and its recognisable bunny-and-crossbones emblem. <span class="house__at">At X-SEPTION: casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="r2.png" src="https://ik.imagekit.io/wemustcreate/logox/r2.png?updatedAt=1791131056775&amp;tr=t-true,h-120" alt="R2 Amsterdam" loading="lazy" decoding="async" data-house="R2 Amsterdam"></span><span><strong>R2 Amsterdam</strong>A contemporary Dutch menswear label offering modern shirts, travel fabrics, herringbone textures and smart-casual staples. <span class="house__at">At X-SEPTION: formal and casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="rockr.jpg" src="https://ik.imagekit.io/wemustcreate/logox/rockr.jpg?updatedAt=1791131056295&amp;tr=t-true,h-120" alt="Rock Revival" loading="lazy" decoding="async" data-house="Rock Revival"></span><span><strong>Rock Revival</strong>A premium denim label known for multiple jean fits, bold washes and decorative detailing with a rebellious identity. <span class="house__at">At X-SEPTION: casual denim.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="venturo.jpg" src="https://ik.imagekit.io/wemustcreate/logox/venturo.jpg?updatedAt=1791404992827&amp;tr=t-true,h-120" alt="Venturo" loading="lazy" decoding="async" data-house="Venturo"></span><span><strong>Venturo</strong>Known for delivering effortless confidence through custom-tailored cuts and meticulous fabric selection, the brand&#x27;s new line brings minimalist aesthetics and exceptional comfort to your wardrobe. <span class="house__at">At X-SEPTION: casual.</span></span></li>
+            <li><span class="house house--sm"><img data-logo="xpooos.png" src="https://ik.imagekit.io/wemustcreate/logox/xpooos.png?updatedAt=1791131058399&amp;tr=t-true,h-120" alt="XPOOOS" loading="lazy" decoding="async" data-house="XPOOOS"></span><span><strong>XPOOOS</strong>A premium European sock and hosiery label known for innovative fabric blends, bold artistic prints and distinctive foot fashion. <span class="house__at">At X-SEPTION: premium fashionable socks, in Shoes &amp; sneakers.</span></span></li>
           </ul>
           <p>Availability changes with each drop and can differ between the two boutiques.</p>
         </div>
@@ -836,7 +931,7 @@ p{margin:0 0 1rem}
       </details>
       <details name="faq">
         <summary>How is the edit split between formal and casual?</summary>
-        <div class="faq__a"><p>Use the Casual and Formal switch above the shoe wall. Formal covers Smart Casual and Boardroom dressing. Casual covers Beach, Boardwalk and After Hours. It is one From Beach to Boardroom wardrobe, sorted by where you are headed.</p></div>
+        <div class="faq__a"><p>Use the Casual and Formal switch above the showroom. Formal covers Smart Casual and Boardroom dressing. Casual covers Beach, Boardwalk and After Hours. Avenue George V Paris, Psycho Bunny, Rock Revival and Venturo are casual only; the other houses dress both ways. It is one From Beach to Boardroom wardrobe, sorted by where you are headed.</p></div>
       </details>
       <details name="faq">
         <summary>Can I check stock before I visit?</summary>
@@ -844,17 +939,17 @@ p{margin:0 0 1rem}
       </details>
       <details name="faq">
         <summary>Where exactly are the boutiques?</summary>
-        <div class="faq__a"><p>Nelson Mandela Square: Shop 39, Sandton. Eastgate Shopping Centre: Shop U123, Upper Level, Bedfordview. Directions for both are <a href="#visit">just below</a>.</p></div>
+        <div class="faq__a"><p>Nelson Mandela Square: Shop 39, Retail Lower Level, Sandton. Eastgate Shopping Centre: Shop U123, Upper Level, Bedfordview. Directions for both are <a href="#visit">just below</a>.</p></div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ================= 07 Find us ================= -->
+<!-- ================= 08 Find us ================= -->
 <section class="visit" id="visit" aria-labelledby="visit-title">
   <div class="wrap">
     <header class="sec-head reveal">
-      <p class="eyebrow"><span class="eyebrow__n">07</span>Boutiques</p>
+      <p class="eyebrow"><span class="eyebrow__n">08</span>Boutiques</p>
       <h2 id="visit-title" class="sec-title">Find <em>us</em></h2>
       <p class="sec-lede">Get directions, then message the concierge so your sizes are confirmed before you arrive.</p>
     </header>
@@ -880,7 +975,7 @@ p{margin:0 0 1rem}
         <div class="store__body">
           <p class="eyebrow">Sandton</p>
           <h3 class="store__name" id="store-nms">Nelson Mandela Square</h3>
-          <address class="store__addr">Shop 39, Nelson Mandela Square<br>Sandton, Johannesburg, 2196</address>
+          <address class="store__addr">Shop 39, Retail Lower Level, Nelson Mandela Square<br>Sandton, Johannesburg, 2196</address>
           <ul class="store__info">
             <li><span>Phone</span><a data-tel-store="nms" href="tel:+27102269475">010 226 9475</a></li>
             <li><span>Hours</span><a data-hours="nms" href="https://www.google.com/maps/search/?api=1&amp;query=X-SEPTION%20Nelson%20Mandela%20Square%20Sandton" target="_blank" rel="noopener noreferrer">Today's hours on Google</a></li>
@@ -964,7 +1059,7 @@ p{margin:0 0 1rem}
       <div>
         <h2>Boutiques</h2>
         <ul>
-          <li><a data-dir="nms" href="https://www.google.com/maps/dir/?api=1&amp;destination=X-SEPTION%20Nelson%20Mandela%20Square%20Sandton" target="_blank" rel="noopener noreferrer">Nelson Mandela Square, Shop 39</a></li>
+          <li><a data-dir="nms" href="https://www.google.com/maps/dir/?api=1&amp;destination=X-SEPTION%20Nelson%20Mandela%20Square%20Sandton" target="_blank" rel="noopener noreferrer">Nelson Mandela Square, Shop 39, Retail Lower Level</a></li>
           <li><a data-dir="eastgate" href="https://www.google.com/maps/dir/?api=1&amp;destination=X-SEPTION%20Eastgate%20Shopping%20Centre%20Bedfordview" target="_blank" rel="noopener noreferrer">Eastgate, Shop U123</a></li>
         </ul>
       </div>
@@ -980,9 +1075,10 @@ p{margin:0 0 1rem}
       <div>
         <h2>Browse</h2>
         <ul>
-          <li><a href="#shoes">Shoes &amp; sneakers</a></li>
-          <li><a href="#bottoms">Bottoms</a></li>
           <li><a href="#tops">Tops &amp; jackets</a></li>
+          <li><a href="#bottoms">Bottoms</a></li>
+          <li><a href="#shoes">Shoes &amp; sneakers</a></li>
+          <li><a href="#wardrobe">The table</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
@@ -1041,9 +1137,10 @@ p{margin:0 0 1rem}
   /* ===================================================================
      DROPS: one line per Instagram post. This is the only list to edit.
        [ 'post link', 'group', 'formal or casual', 'status' ]
-       group:  shoes | sneakers | jeans | pants | tops | jackets | latest
+       group:  shoes | sneakers | socks | jeans | pants | underwear | tops | jackets | latest
+               (socks = XPOOOS, under Shoes; underwear = Bruno Banani underwear and swimwear, under Bottoms; both show in Formal and Casual)
                (latest = 'Just landed' row at the top, for posts not yet sorted)
-       line:   formal | casual     (optional; defaults are in GROUPS below)
+       line:   formal | casual | any   (optional; any = shows under Formal and Casual; defaults are in GROUPS below)
        status: new | low | sold    (optional; default is limited drop)
      Delete the line when a piece is gone for good.
      Example:
@@ -1085,13 +1182,15 @@ p{margin:0 0 1rem}
   var GROUPS = {
     shoes:    { label: 'Shoes',    section: 'shoes',   line: 'formal' },
     sneakers: { label: 'Sneakers', section: 'shoes',   line: 'casual' },
+    socks:    { label: 'Socks',    section: 'shoes',   line: 'any' },
     jeans:    { label: 'Jeans',    section: 'bottoms', line: 'casual' },
     pants:    { label: 'Pants',    section: 'bottoms', line: 'formal' },
+    underwear: { label: 'Underwear & swimwear', section: 'bottoms', line: 'any' },
     tops:     { label: 'Tops',     section: 'tops',    line: 'casual' },
     jackets:  { label: 'Jackets',  section: 'tops',    line: 'formal' },
     latest:   { label: 'Just landed', section: 'latest', line: 'any' }
   };
-  var SECTIONS = { latest: ['latest'], shoes: ['shoes', 'sneakers'], bottoms: ['jeans', 'pants'], tops: ['tops', 'jackets'] };
+  var SECTIONS = { latest: ['latest'], shoes: ['shoes', 'sneakers', 'socks'], bottoms: ['jeans', 'pants', 'underwear'], tops: ['tops', 'jackets'] };
   var SECTION_NAME = { latest: 'new arrivals', shoes: 'shoes and sneakers', bottoms: 'jeans and pants', tops: 'tops and jackets' };
   var STATUS_LABEL = { 'new': 'Just in', limited: 'Limited drop', low: 'Low availability', sold: 'Sold out' };
   var LINE_LABEL = { formal: 'Formal', casual: 'Casual' };
@@ -1156,7 +1255,7 @@ p{margin:0 0 1rem}
       url: post.url,
       group: group,
       section: GROUPS[group].section,
-      line: LINE_LABEL[o.line] ? o.line : GROUPS[group].line,
+      line: (LINE_LABEL[o.line] || o.line === 'any') ? o.line : GROUPS[group].line,
       status: STATUS_LABEL[o.status] ? o.status : 'limited',
       brand: clean(o.brand, 40),
       name: clean(o.name, 90)
@@ -1205,7 +1304,7 @@ p{margin:0 0 1rem}
   /* ---------- Rendering ---------- */
   function dropCard(it, idx) {
     var cell = el('div', { 'class': 'cell', role: 'listitem', 'data-line': it.line, 'data-id': it.id, style: '--i:' + idx });
-    var card = el('article', { 'class': 'drop-card' + (it.status === 'sold' ? ' drop-card--sold' : ''), 'aria-label': GROUPS[it.group].label + ', ' + lineLabel(it.line) + ', ' + STATUS_LABEL[it.status] });
+    var card = el('article', { 'class': 'drop-card' + (it.status === 'sold' ? ' drop-card--sold' : ''), 'aria-label': GROUPS[it.group].label + (LINE_LABEL[it.line] ? ', ' + LINE_LABEL[it.line] : '') + ', ' + STATUS_LABEL[it.status] });
     var embed = el('div', { 'class': 'drop-card__embed' });
     var quote = el('blockquote', { 'class': 'instagram-media', 'data-instgrm-captioned': '', 'data-instgrm-permalink': it.url + '?utm_source=ig_embed', 'data-instgrm-version': '14' });
     quote.appendChild(el('a', { 'class': 'ig-fallback', href: it.url, target: '_blank', rel: 'noopener noreferrer' }, [
@@ -1552,6 +1651,61 @@ p{margin:0 0 1rem}
     window.setTimeout(function () { start(!!(doorImg && doorImg.complete && doorImg.naturalWidth)); }, 3000);
   }
 
+  /* ---------- The wardrobe: the light moves piece to piece, a pill names the house ---------- */
+  function initWardrobe() {
+    var frame = $('[data-plano]');
+    if (!frame) return;
+    var stage = $('.plano__stage', frame), spots = $$('.plano__spot', frame), pills = $$('.plano__pills .pill', frame), chips = $$('.plano__chip');
+    var n = spots.length, cur = -1, holdUntil = 0, inView = false;
+    if (!n) return;
+    function num(el, prop) { return parseFloat(el.style.getPropertyValue(prop)) || 0; }
+    function pan() {
+      if (cur < 0) return;
+      var s = spots[cur];
+      var cx = num(s, '--x'), cy = num(s, '--y') + 4;
+      var F = frame.clientWidth, Fh = frame.clientHeight, W = stage.offsetWidth, Hh = stage.offsetHeight;
+      var tx = Math.min(0, Math.max(F - W, F / 2 - cx / 100 * W));
+      var ty = Math.min(0, Math.max(Fh - Hh, Fh / 2 - cy / 100 * Hh));
+      stage.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0)';
+    }
+    function show(i) {
+      if (i === cur) return;
+      cur = i;
+      var s = spots[i];
+      stage.style.setProperty('--lx', num(s, '--x') + '%');
+      stage.style.setProperty('--ly', num(s, '--y') + '%');
+      stage.style.setProperty('--rw', (num(s, '--w') * 0.82).toFixed(1) + '%');
+      stage.style.setProperty('--rh', (num(s, '--h') * 0.78).toFixed(1) + '%');
+      pills.forEach(function (p, k) { p.classList.toggle('is-on', k === i); });
+      chips.forEach(function (c, k) { c.setAttribute('aria-pressed', String(k === i)); });
+      pan();
+    }
+    function pick(i) { holdUntil = Date.now() + 9000; show(i); }
+    spots.forEach(function (s, k) {
+      s.addEventListener('click', function () { pick(k); });
+      s.addEventListener('focus', function () { pick(k); });
+      s.addEventListener('mouseenter', function () { if (window.matchMedia('(hover: hover)').matches) pick(k); });
+    });
+    chips.forEach(function (c, k) { c.addEventListener('click', function () { pick(k); }); });
+    /* Emblem-only logos (a dagger, a fish) also show the house name */
+    pills.forEach(function (p) {
+      var img = $('.pill__logo img', p);
+      function check() { if (img && img.naturalWidth && img.naturalWidth / img.naturalHeight < 1.6) p.classList.add('pill--named'); }
+      if (img) { check(); img.addEventListener('load', check); }
+    });
+    pills.forEach(function (p) {
+      p.addEventListener('click', function () { try { setLine(p.getAttribute('data-line'), true); } catch (e) {} });
+      p.addEventListener('focus', function () { holdUntil = Date.now() + 9000; });
+    });
+    window.addEventListener('resize', pan, { passive: true });
+    show(0);
+    if (reduced) return;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { inView = e.isIntersecting; }); }, { threshold: 0.35 }).observe(frame);
+    } else inView = true;
+    window.setInterval(function () { if (inView && Date.now() > holdUntil && !document.hidden) show((cur + 1) % n); }, 2800);
+  }
+
   /* ---------- Photoreal scenes ---------- */
   function ikSrcset(u) {
     if (!/^https:\/\/ik\.imagekit\.io\//.test(u)) return '';
@@ -1650,6 +1804,7 @@ p{margin:0 0 1rem}
     try { brandLogos(); } catch (e) {}
     try { initHero(); } catch (e) {}
     try { buildScenes(); } catch (e) {}
+    try { initWardrobe(); } catch (e) {}
     try { marquee(); } catch (e) {}
     try { houseLogos(); } catch (e) {}
     var params;

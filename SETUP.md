@@ -15,13 +15,32 @@ Repo: `searchplaybook-crypto/xseption`, branch `main` (GitHub Pages).
 On a phone: open the repo in the browser, tap the 3 dots (⋯) > Add file > Create new file, type the full path (folders included), paste the content, then Commit changes.
 
 ## 2. How the edit is organised
-Three sections, six groups. Every product slot is an Instagram post embed.
+Three sections, eight groups. Every product slot is an Instagram post embed.
 
 | Section | Groups |
 |---|---|
-| Shoes & sneakers | `shoes`, `sneakers` |
-| Jeans & pants (Bottoms) | `jeans`, `pants` |
 | Tops & jackets | `tops`, `jackets` |
+| Jeans & pants (Bottoms) | `jeans`, `pants`, `underwear` (Bruno Banani underwear and swimwear) |
+| Shoes & sneakers | `shoes`, `sneakers`, `socks` (XPOOOS) |
+
+The showroom runs head to toe: Tops & jackets, Bottoms, Shoes. The table (section 9) follows it.
+
+### Houses on the floor
+| House | At X-SEPTION | Line |
+|---|---|---|
+| A Fish Named Fred | Shirts and coordinated looks | Formal and casual |
+| ALBERTO | Pants and denim | Formal and casual |
+| Avenue George V Paris | Tops | Casual |
+| Bruno Banani | Underwear and swimwear | Shows under both |
+| bugatti | Shirts, chinos and trousers | Formal and casual |
+| Cesare Paciotti | Shoes | Formal and casual |
+| Jo Ghost | Formal shoes and casual pairs | Formal and casual |
+| Milestone | Outerwear jackets | Semi-formal to casual (shows under both) |
+| Psycho Bunny | Polos, shirts and caps | Casual |
+| R2 Amsterdam | Shirts | Formal and casual |
+| Rock Revival | Denim | Casual |
+| Venturo | Minimalist, tailored cuts | Casual |
+| XPOOOS | Premium fashionable socks | Shows under both |
 
 The Formal / Casual switch filters every group. Until a section has posts, it shows a short "next drop lands on Instagram" panel with WhatsApp and Instagram buttons.
 
@@ -30,8 +49,8 @@ Open `index.html` > tap the 3 dots (⋯) > Edit file > search for `var DROPS`. A
 ```
 ['https://www.instagram.com/p/POST_CODE/', 'sneakers', 'casual', 'new'],
 ```
-- Group: `shoes` `sneakers` `jeans` `pants` `tops` `jackets`
-- Line (optional): `formal` or `casual`. Defaults: shoes, pants, jackets = formal; sneakers, jeans, tops = casual.
+- Group: `shoes` `sneakers` `socks` `jeans` `pants` `underwear` `tops` `jackets`
+- Line (optional): `formal`, `casual` or `any` (shows under both). Defaults: shoes, pants, jackets = formal; sneakers, jeans, tops = casual; socks and underwear show under Formal and Casual.
 - Status (optional): `new`, `low` or `sold`. Default is Limited drop.
 - Gone for good: delete the line.
 
@@ -54,7 +73,7 @@ First caption line is the piece name. Name the brand in the caption.
 
 | Purpose | Tags |
 |---|---|
-| Group (required) | `#xsShoes` `#xsSneakers` `#xsJeans` `#xsPants` `#xsTops` `#xsJackets` |
+| Group (required) | `#xsShoes` `#xsSneakers` `#xsSocks` `#xsJeans` `#xsPants` `#xsUnderwear` or `#xsSwimwear` `#xsTops` `#xsJackets` |
 | Formal or casual (optional) | `#xsFormal` `#xsCasual` |
 | Wardrobe zone (optional) | `#xsBeach` `#xsBoardwalk` `#xsSmartCasual` `#xsBoardroom` `#xsAfterHours` |
 | Status | `#xsNew` `#xsLow` `#xsSoldOut` `#xsArchive` |
@@ -78,7 +97,7 @@ Posts without a group tag (store news, events) are never listed. Sold out: add `
 - Keep `google0358e8a493fefd4f.html` in the repo root: it is the Google Search Console verification.
 - The X star tab icon is built into `index.html`. The two files in `assets/icons/` add the icon for phone home screens and for Google Search results.
 - After the new `index.html` is live, the old files `assets/logoxt.png` and `assets/xegstorebg1.webp` to `xegstorebg4.webp` are no longer used and can be deleted (about 1.6 MB).
-- Confirm the Nelson Mandela Square level: the Brand Kit says Upper Level, the commerce brief says Lower Level. The page shows "Shop 39" only.
+- Nelson Mandela Square is Shop 39, Retail Lower Level (confirmed 8 Oct 2026). Use the same wording on Google Business Profile and directories.
 - Optional: Google Maps > the store listing > Share > Embed a map. Paste the `src` value into `CONFIG.stores.nms.embed` and `CONFIG.stores.eastgate.embed` in index.html to pin the exact GBP profile.
 - When the site moves to x-seption.com, update the canonical, `og:url` and JSON-LD URLs in the head.
 
@@ -116,3 +135,23 @@ On a phone: repo > tap the 3 dots (⋯) > Add file > Upload files, add all four,
 To change a photo later, upload a new file with the same name. Keep the rule: Eastgate is the background, Nelson Mandela Square is the doors.
 
 If a photo is missing or slow: when the door photo is not ready within 3 seconds, the dark cover fades straight to the entrance; when the Eastgate photo is missing, the entrance shows the X star on a dark background. The old line-art entrance and drawings have been removed from the page.
+
+## 9. The wardrobe (light and house pills)
+After the showroom (Tops & jackets, then Bottoms, then Shoes), a linen table holds nine generic pieces in three looks. It sits well away from the logo strip in About. A warm light moves from piece to piece, and a pill with the house logo appears for the lit piece. Tapping a piece (or its name under the table) moves the light there; tapping the pill opens that part of the edit with the right Formal or Casual setting. On phones the view follows the light and the pill sits at the bottom of the frame.
+
+| Piece | House | Line |
+|---|---|---|
+| Black tee | Avenue George V Paris | Casual |
+| Polo | A Fish Named Fred | Formal and casual |
+| Dress shoes | Cesare Paciotti | Formal and casual |
+| Shirt | R2 Amsterdam | Formal and casual |
+| Chinos | bugatti | Formal and casual |
+| Sneakers | Jo Ghost | Formal and casual |
+| White tee | Venturo | Casual |
+| Jeans | Rock Revival | Casual |
+| Cap | Psycho Bunny | Casual |
+
+File: `assets/wardrobe/wardrobe.webp` (about 64 KB). The brand cards, printed names and labels were removed from the original planogram, so every piece is generic and only the pill names the house. The page says the pieces are shown for styling, not as stock.
+
+The Instagram sync uses the same house lines: a post from Avenue George V Paris, Psycho Bunny, Rock Revival or Venturo is listed as Casual unless its caption says `#xsFormal`, and a Milestone jacket shows under both Formal and Casual unless the caption says otherwise.
+

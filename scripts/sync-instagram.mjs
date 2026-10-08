@@ -8,7 +8,7 @@
  * Instagram's own embed, so no images are copied into the repo.
  *
  * Only posts tagged with a group hashtag are listed:
- *   #xsShoes  #xsSneakers  #xsJeans  #xsPants  #xsTops  #xsJackets      (required, pick one)
+ *   #xsShoes  #xsSneakers  #xsSocks  #xsJeans  #xsPants  #xsUnderwear  #xsSwimwear  #xsTops  #xsJackets   (required, pick one)
  *   #xsFormal  #xsCasual                                                (optional)
  *   #xsBeach  #xsBoardwalk  #xsSmartCasual  #xsBoardroom  #xsAfterHours  (optional zone)
  *   #xsNew  #xsLow  #xsSoldOut  #xsArchive                              (status; default limited drop)
@@ -51,8 +51,11 @@ const BRANDS = [
   ['Bruno Banani', ['bruno banani']],
   ['XPOOOS', ['xpooos']]
 ];
-const GROUP_TAGS = { xsshoes: 'shoes', xssneakers: 'sneakers', xsjeans: 'jeans', xspants: 'pants', xstops: 'tops', xsjackets: 'jackets' };
-const GROUP_LINE = { shoes: 'formal', sneakers: 'casual', jeans: 'casual', pants: 'formal', tops: 'casual', jackets: 'formal' };
+const GROUP_TAGS = { xsshoes: 'shoes', xssneakers: 'sneakers', xssocks: 'socks', xsjeans: 'jeans', xspants: 'pants', xsunderwear: 'underwear', xsswimwear: 'underwear', xstops: 'tops', xsjackets: 'jackets' };
+const GROUP_LINE = { shoes: 'formal', sneakers: 'casual', socks: 'any', jeans: 'casual', pants: 'formal', underwear: 'any', tops: 'casual', jackets: 'formal' };
+/* House lines (owner's list, 8 Oct 2026). Casual-only houses list as Casual; Milestone outerwear spans
+   semi-formal to casual, so it shows under both. Houses not listed follow the group default. */
+const BRAND_LINE = { 'Avenue George V Paris': 'casual', 'Psycho Bunny': 'casual', 'Rock Revival': 'casual', 'Venturo': 'casual', 'Milestone': 'any' };
 const ZONE_TAGS = { xsbeach: 'Beach', xsboardwalk: 'Boardwalk', xssmartcasual: 'Smart Casual', xsboardroom: 'Boardroom', xsafterhours: 'After Hours' };
 const FORMAL_ZONES = new Set(['Smart Casual', 'Boardroom']);
 const STATUS_TAGS = { xsnew: 'new', xslow: 'low', xssoldout: 'sold', xsarchive: 'archived' };
@@ -118,10 +121,11 @@ function toItem(media) {
 
   const zoneTag = Object.keys(ZONE_TAGS).find((t) => tags.has(t));
   const zone = zoneTag ? ZONE_TAGS[zoneTag] : '';
+  const brand = detectBrand(caption);
   const line = tags.has('xsformal') ? 'formal'
     : tags.has('xscasual') ? 'casual'
     : zone ? (FORMAL_ZONES.has(zone) ? 'formal' : 'casual')
-    : GROUP_LINE[group];
+    : BRAND_LINE[brand] || GROUP_LINE[group];
   const lines = textLines(caption);
 
   return {
@@ -130,7 +134,7 @@ function toItem(media) {
     line,
     zone,
     status,
-    brand: detectBrand(caption),
+    brand,
     name: (lines[0] || '').slice(0, 90),
     ig: `https://www.instagram.com/${link[1]}/${link[2]}/`,
     posted: typeof media.timestamp === 'string' ? media.timestamp.slice(0, 10) : ''
