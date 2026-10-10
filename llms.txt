@@ -16,7 +16,7 @@ Tagline: Curated. Not Crowded.
 - [Tops and jackets](https://searchplaybook-crypto.github.io/xseption/#tops): shirts, polos, tees and jackets
 - [Jeans and pants](https://searchplaybook-crypto.github.io/xseption/#bottoms): pants, denim, and Bruno Banani underwear and swimwear
 - [Shoes and sneakers](https://searchplaybook-crypto.github.io/xseption/#shoes): formal shoes, casual pairs and XPOOOS socks
-- [The table](https://searchplaybook-crypto.github.io/xseption/#wardrobe): three looks with the house behind each piece
+- [Spotlight](https://searchplaybook-crypto.github.io/xseption/#wardrobe): beach to boardroom, with the house behind each piece
 - [Formal edit](https://searchplaybook-crypto.github.io/xseption/?line=formal#shoes) and [casual edit](https://searchplaybook-crypto.github.io/xseption/?line=casual#tops)
 - [FAQ](https://searchplaybook-crypto.github.io/xseption/#faq): opening hours, the WhatsApp concierge, houses carried, sold-out pieces and checking stock before a visit
 - [Find us](https://searchplaybook-crypto.github.io/xseption/#visit): maps and telephone numbers for both stores
@@ -26,7 +26,6 @@ Tagline: Curated. Not Crowded.
 
 - A Fish Named Fred: formal and casual
 - ALBERTO: pants and denim, formal and casual
-- Avenue George V Paris: casual
 - Bruno Banani: underwear and swimwear
 - bugatti: formal and casual
 - Cesare Paciotti: shoes, formal and casual
